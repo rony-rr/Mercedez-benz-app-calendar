@@ -1,0 +1,11 @@
+import React from "react";
+import {Text} from "react-native";
+import styles from "./Style"
+
+const Textos = ({text}) => {
+  return (
+      <Text style={styles.label}>{text}</Text>
+  );
+};
+
+export default Textos;
