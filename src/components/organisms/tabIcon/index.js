@@ -7,17 +7,14 @@ const tabIcon = ({ focused, route, size, color }) => {
     case "stackHome":
       iconName = "home";
       break;
-    case "stackCategories":
-      iconName = "tag";
+    case "stackShelude":
+      iconName = "calendar";
       break;
-    case "stackAddRecipe":
-      iconName = "plus-circle";
+    case "stackShop":
+      iconName = "tago";
       break;
-    case "stackFavorites":
-      iconName = "cards-heart";
-      break;
-    case "stackRegional":
-      iconName = "map-search";
+    case "stackAccount":
+      iconName = "user";
       break;
     default:
       iconName = "bug";

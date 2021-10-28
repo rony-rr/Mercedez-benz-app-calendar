@@ -2,7 +2,9 @@ import { StyleSheet } from "react-native";
 import GlobalVars from "../../../global/globalVars"
 const styles = StyleSheet.create({
   view: {
+    width: '100%',
     flexDirection:'row',
+    backgroundColor:'black',
     justifyContent:'space-between'
   },
   headerContentLogo:{

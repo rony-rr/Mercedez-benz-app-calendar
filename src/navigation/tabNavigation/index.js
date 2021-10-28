@@ -4,8 +4,9 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import TabIcon from '../../components/organisms/tabIcon/index'
 import GlobalVars from "../../global/globalVars";
 import HomeStack from "../stackHome/index";
-
-
+import SheludeStack from "../stackShelude";
+import ShopStack from "../stackShop";
+import AccountStack from "../stackAccount";
 const Tab = createBottomTabNavigator();
 
 export default function Navigation() {
@@ -18,7 +19,7 @@ export default function Navigation() {
           tabBarIcon: ({ focused, color, size }) => <TabIcon route={route.name} size={size} focused={focused} color={color} />,
           tabBarActiveTintColor: GlobalVars.white,
           tabBarInactiveTintColor: GlobalVars.whiteLite,
-          tabBarStyle: { backgroundColor:GlobalVars.colorTextRed},
+          tabBarStyle: { backgroundColor:GlobalVars.black},
           showLabel:false
         })}
       >
@@ -28,25 +29,21 @@ export default function Navigation() {
           options={{ title: "inicio", headerShown: false }}
         />
         <Tab.Screen
-          name="stackCategories"
-          component={HomeStack}
+          name="stackShelude"
+          component={SheludeStack}
           options={{ title: "inicio", headerShown: false }}
         />
         <Tab.Screen
-          name="stackAddRecipe"
-          component={HomeStack}
+          name="stackShop"
+          component={ShopStack}
           options={{ title: "inicio", headerShown: false }}
         />
         <Tab.Screen
-          name="stackFavorites"
-          component={HomeStack}
+          name="stackAccount"
+          component={AccountStack}
           options={{ title: "inicio", headerShown: false }}
         />
-        <Tab.Screen
-          name="stackRegional"
-          component={HomeStack}
-          options={{ title: "inicio", headerShown: false }}
-        />
+       
       </Tab.Navigator>
     
   );
