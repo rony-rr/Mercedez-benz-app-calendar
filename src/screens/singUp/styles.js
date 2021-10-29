@@ -24,11 +24,11 @@ const styles = StyleSheet.create({
     borderRadius:100,
   },
   input:{
-    marginTop:40,
+    marginTop:50,
     textAlign:'center',
     color:'white',
     fontSize:20,
-    width:'90%',
+    width:'80%',
     borderBottomWidth:0.5,
     borderColor:'white'
   },

@@ -21,6 +21,7 @@ const index = () => {
             uri: 'https://yt3.ggpht.com/ytc/AKedOLSlQErlIOYqfiFq8WIXGs4r54Om_EUc0cdmSF8G=s900-c-k-c0x00ffffff-no-rj',
           }}
         />
+        <Text style={{color:'white',fontSize:18,marginVertical:10}}>Sergio Matti</Text>
        </View>
        <View style={{alignItems:'center'}}>
           <View style={styles.card}>
@@ -57,7 +58,7 @@ const index = () => {
        </View>
 
        <View style={{alignItems:'center'}}>
-          <View style={styles.card}>
+          <View style={styles.card2}>
               <View style={styles.cardContentIcon}>
                     <Icon 
                       iconName='tago'
@@ -94,8 +95,9 @@ const styles = StyleSheet.create({
   },
   imgProfile:{
     marginTop:10,
-    height:200,
-    width:150
+    borderRadius:50,
+    height:90,
+    width:90
   },
   cardContentIcon:{
     width:'30%',
@@ -111,6 +113,14 @@ const styles = StyleSheet.create({
     width:'85%',
     paddingVertical:25,
     borderColor:'white',
+    borderBottomWidth:0.5
+  },
+  card2:{
+    flexDirection:'row',
+    justifyContent:'space-between',
+    width:'85%',
+    paddingVertical:25,
+    borderColor:'black',
     borderBottomWidth:0.5
   }
 });

@@ -22,9 +22,12 @@ const index = () => {
             uri: 'https://yt3.ggpht.com/ytc/AKedOLSlQErlIOYqfiFq8WIXGs4r54Om_EUc0cdmSF8G=s900-c-k-c0x00ffffff-no-rj',
           }}
         />
+        <Text style={{color:'white',fontSize:18,marginVertical:10}}>Sergio Matti</Text>
+        <Text style={{color:'white',fontSize:12,marginVertical:10,marginHorizontal:50}}>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.</Text>
        </View>
 
       <View style={{width:GlobalVars.windowWidth,alignItems:'center'}}>
+      <Text style={{color:'white',fontSize:18,marginVertical:10}}>Mi Mercedes</Text>
       <TextInput
         placeholder='Cita pendiente / 05/08/2021'
         placeholderTextColor='grey'
@@ -72,9 +75,10 @@ const styles = StyleSheet.create({
     height: GlobalVars.windowHeight,
   },
   imgProfile:{
-    marginTop:10,
-    height:190,
-    width:150
+    marginTop:15,
+    borderRadius:50,
+    height:90,
+    width:90
   },
   input:{
     marginTop:40,

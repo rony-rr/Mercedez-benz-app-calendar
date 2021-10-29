@@ -18,13 +18,16 @@ const index = () => {
       style={styles.background}
     >
        <Header label='Agendar Cita'/>
-    <View style={{alignItems:'flex-start',paddingVertical:10,width:'80%'}}>
-        <Icon 
+    <View style={{flexDirection:'row',justifyContent:'space-between',paddingVertical:20}}>
+      <Icon 
         iconName='tool'
         color='white'
-        size={50}
-
-    />
+        size={40}
+        
+      />
+      <View style={{justifyContent:'center',marginHorizontal:15}}>
+        <Text style={{fontSize:15,color:'white'}}>Mantenimiento</Text>
+      </View>
     </View>
     <View style={{width:'80%'}}>
       <Text style={styles.info}>Un buen mantenimiento periodico ,garantiza el eficiente funcionamiento de tu estrella,por ello te invitamos aque agendes tu cita de servicio,desde la comodidad de tu casa a través de este medio.</Text>
@@ -58,8 +61,8 @@ const styles = StyleSheet.create({
   },
   info:{
     color:'white',
-    fontSize:15,
-    marginTop:10,
+    fontSize:13,
+    marginTop:20,
     textAlign:'left'
   },
   btnCreate:{

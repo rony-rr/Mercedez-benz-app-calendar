@@ -15,14 +15,14 @@ const view = () => {
       <Header label=''/>
 
       <View style={{alignItems:'center'}}>
-      <TouchableOpacity style={styles.btnPhoto}>
+      {/* <TouchableOpacity style={styles.btnPhoto}>
         <AntDesign name="camerao" size={45} color="white" />
         <View
          style={styles.btnAdd}
         >
         <Octicons name="plus-small" size={45} color="white" />
         </View>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <TextInput
         placeholder='Nombre'
         placeholderTextColor='white'
@@ -34,22 +34,22 @@ const view = () => {
         style={styles.input}
       />
       <TextInput
-        placeholder='Placa de vehículo'
-        placeholderTextColor='white'
-        style={styles.input}
-      />
-      <TextInput
         placeholder='Correo Electronico'
         placeholderTextColor='white'
         style={styles.input}
       />
       <TextInput
-        placeholder='Password'
+        placeholder='Teléfono'
         placeholderTextColor='white'
         style={styles.input}
       />
       <TextInput
-        placeholder='Confirm password'
+        placeholder='Modelo'
+        placeholderTextColor='white'
+        style={styles.input}
+      />
+      <TextInput
+        placeholder='Año'
         placeholderTextColor='white'
         style={styles.input}
       />

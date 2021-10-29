@@ -5,6 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import Icon from "../../components/atoms/icon/index"
 import { useNavigation } from '@react-navigation/native';
 import GlobalVars from '../../global/globalVars';
+import { FontAwesome5 } from '@expo/vector-icons';
 
 const index = () => {
   const navigation = useNavigation();
@@ -17,8 +18,14 @@ const index = () => {
       colors={['rgba(74,89,95,0.5)', 'black']}
       style={styles.background}
     >
+
        <Header label='Boutique  '/>
-    <ScrollView>
+     
+
+  <View style={{flex:1}}>
+  
+  <ScrollView>
+      
       <View style={{width:GlobalVars.windowWidth,flexDirection:'row',justifyContent:'space-between'}}>
         <View style={styles.carProduct}>
           <Image
@@ -109,6 +116,27 @@ const index = () => {
         </View>
       </View>      
     </ScrollView>
+  </View>
+    <View style={{width:'100%'}}>
+    <TouchableOpacity
+    onPress={()=>alert('Test')}
+    style={{
+    borderWidth:4,
+    borderColor:'white',
+    alignItems:'center',
+    justifyContent:'center',
+    width:70,
+    position: 'absolute',                                          
+    bottom: 10,                                                    
+    right: 10,
+    height:70,
+    backgroundColor:'#2ECC71',
+    borderRadius:100,
+    }}
+    >
+    <FontAwesome5 name="whatsapp" size={40} color="white" />
+    </TouchableOpacity>
+    </View> 
     </LinearGradient>
    
   </View>
