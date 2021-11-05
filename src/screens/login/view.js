@@ -5,20 +5,16 @@ import GlobalVars from "../../global/globalVars";
 import Input from "../../components/atoms/input";
 import Buttom from "../../components/molecules/button";
 import Image from "../../components/atoms/image";
-import Modal from "../../components/templates/modalLoading";
 
-const view = ({ onSubmit, openModal }) => {
+const view = ({ onSubmit }) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-
   const data = {
     email: email,
     password: password,
   };
-
   return (
     <View style={styles.view}>
-      <Modal openModal={openModal} />
       <Image
         img={require("../../../assets/logo.png")}
         width={GlobalVars.windowWidth / 8}
