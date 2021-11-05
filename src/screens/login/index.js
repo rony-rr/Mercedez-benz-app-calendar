@@ -1,28 +1,33 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { View, Text } from 'react-native'
 import Login from './view'
 import fetchHook  from '../../utils/useFetch'
 import GlobalVars from '../../global/globalVars'
 
-const urlLogin = `${GlobalVars.urlApi}login`;
+const index = ({navigation}) => {
+  const [openModal, setOpenModal] = useState(false)
 
-const login = async (data) =>{
-  try { 
-    const response = await fetchHook.fetchPost(urlLogin,data);
-    if(response.status == true){
-      
-    }else{
-      alert('algo salio mal')
+  const urlLogin = `${GlobalVars.urlApi}login`;
+
+  const login = async (data) =>{
+    setOpenModal(true);
+    try { 
+      const response = await fetchHook.fetchPost(urlLogin,data);
+      if(response.status == true){
+          navigation.navigate('TabNavigation');
+          setOpenModal(false);
+      }else{
+        setOpenModal(false);
+      }
+    } catch (error) {
+      console.log(error)
     }
-  } catch (error) {
-    console.log(error)
   }
-}
 
-
-const index = () => {
+  
   return (
     <Login
+      openModal={openModal}
       onSubmit={login}
     />
   )

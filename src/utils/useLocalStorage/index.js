@@ -1,56 +1,43 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-
-
-
-
-const StorageData = async (key,value) => {
+const storeData = async (key, value) => {
   try {
-     await AsyncStorage.setItem(key,value);
-  }catch (error) {
+    await AsyncStorage.setItem(key, value);
+  } catch (error) {
     console.log(error);
   }
 };
-
-const removeItemStorageData = async (key) => {
-  //el metodo remove por medio de AsyngStorage removera el contenido almacenado en la memoria del dispositivo
+const removeItem = async (key) => {
   try {
-    await AsyncStorage.removeItem(key); //Metodo .removeItem que nos permite remover el contenido almacenado.
+    await AsyncStorage.removeItem(key);
   } catch (error) {
-    //definimos un catch de error por defecto
-    console.log(error)
+    console.log(error);
   }
 };
-
-const getItemData = async (key) => {
-  //Metodo que nos permite Obtener la informacion de la key del metodo StorageDate
+const getItem = async (key) => {
   try {
     const value = await AsyncStorage.getItem(key);
     return value;
   } catch (error) {
-    //definimos un catch de error por defecto
-    console.log("error al leer la info");
+    console.log(error);
   }
 };
 
 const clearAll = async () => {
   try {
-    await AsyncStorage.clear()
-  } catch(e) {
-    // clear error
+    await AsyncStorage.clear();
+  } catch (e) {
+    console.log(e)
   }
-
-  console.log('Done.')
-}
-
-
-const storage = {
-  StorageData,
-  removeItemStorageData,
-  getItemData,
-  clearAll
 };
 
-Object.freeze(storage);
+const storage = {
+  storeData,
+  removeItem,
+  getItem,
+  clearAll,
+};
+
+
 
 export default storage;
