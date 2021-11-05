@@ -1,23 +1,33 @@
-import React,{useEffect,useState} from 'react'
-import VerifyAuth from './view'
-import storage from '../../utils/useLocalStorage'
+import React, { useEffect, useState } from "react";
+import storage from "../../utils/useLocalStorage";
+import Splash from "../../components/templates/splashLoading";
 
-const getToken = async (data) =>{
-  try { 
-    const response = await storage.getItemData('userToken')
-    console.log(response)
-  } catch (error) {
-    console.log(error)
-  }
-}
 
-const index = () => {
-  setTimeout(() => {
-    getToken()
-  }, 2000);
-  return (
-    <VerifyAuth/>
-  )
-}
+const index = ({navigation}) => {
+ 
+  const [verificandoAuth, setVerificandoAuth] = useState(null);
 
-export default index
+  useEffect(() => {
+    getToken('userToken');
+  }, []);  
+  
+  const getToken = async (key) => {
+    try {
+      const response = await storage.getItemData(key);
+      if (response !== null) {
+        navigation.navigate('TabNavigation')
+      } else {
+        navigation.navigate('Login')
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  if(verificandoAuth == null)  return <Splash />
+
+ 
+  
+};
+
+export default index;

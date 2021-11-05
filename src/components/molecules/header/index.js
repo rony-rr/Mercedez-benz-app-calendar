@@ -2,7 +2,7 @@ import React from 'react';
 import {View} from 'react-native';
 import styles from './styles';
 import Image from '../../atoms/image';
-import Text from '../../atoms/text/index';
+import Text from '../../atoms/text';
 import GlobalVars from '../../../global/globalVars';
 import StatusBar  from '../../atoms/statusBar';
 
