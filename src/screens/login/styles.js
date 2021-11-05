@@ -6,6 +6,10 @@ const styles = StyleSheet.create({
     alignItems:'center',
     justifyContent:'center',
     backgroundColor:GlobalVars.black,
+  },
+  footer:{
+    flexDirection:'row',
+    justifyContent:'space-between'
   }
 });
 

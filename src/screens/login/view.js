@@ -1,19 +1,29 @@
 import React, { useState } from "react";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import styles from "./styles";
 import GlobalVars from "../../global/globalVars";
 import Input from "../../components/atoms/input";
 import Buttom from "../../components/molecules/button";
 import Image from "../../components/atoms/image";
 import Modal from "../../components/templates/modalLoading";
+import Alert from "../../utils/useAlert";
+import LabelBtn from '../../components/molecules/labelTouchable'
 
-const view = ({ onSubmit, openModal }) => {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+const view = ({ onSubmit,onRegister,onHelp,openModal }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const data = {
     email: email,
     password: password,
+  };
+
+  const validateData = () => {
+    if (email.length == 0 || password.length == 0) {
+      Alert("Mensaje", "Campos vacíos");
+    } else {
+      onSubmit(data);
+    }
   };
 
   return (
@@ -27,7 +37,17 @@ const view = ({ onSubmit, openModal }) => {
       />
       <Input placeholder="Ingresar correo" changeText={setEmail} />
       <Input placeholder="Ingresar password" changeText={setPassword} />
-      <Buttom onSubmit={() => onSubmit(data)} label="Acceder" />
+      <Buttom onSubmit={() => validateData()} label="Acceder" />
+      <View style={styles.footer}>
+        <LabelBtn
+          onPress={onRegister}
+          label='Registrarme'
+        /> 
+        <LabelBtn
+          label='Necesitas ayuda?'
+          onPress={onHelp}
+        />         
+      </View>
     </View>
   );
 };
