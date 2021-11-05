@@ -1,8 +1,8 @@
 import React from 'react'
 import styles from "./styles"
 import {View} from 'react-native'
-import Loading from "../../atoms/loading/index"
-import Image from "../../atoms/imageLocal/index"
+import Loading from "../../atoms/loading"
+import Image from "../../atoms/image"
 import GlobalVars from '../../../global/globalVars'
 const index = () => {
 
@@ -11,6 +11,7 @@ const index = () => {
       <Image 
         width={GlobalVars.windowWidth/6}
         height={GlobalVars.windowHeight/4} 
+        img={require('../../../../assets/logo.png')}
         mode='contain'
       />
       <Loading size='small' color={GlobalVars.white} />

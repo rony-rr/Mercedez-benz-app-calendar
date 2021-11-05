@@ -1,14 +1,38 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import AccountScreen from '../../screens/account/index'
+import MyAccountScreen from '../../screens/account'
+import SingupScreen from '../../screens/singUp'
+import LoginScreen from '../../screens/login'
+import UploadPicScreen from '../../screens/uploadPicProfile'
+import VerifyAuth from '../../screens/verifyAuth'
 const Stack = createStackNavigator();
 
 export default function AccountStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="account"
-        component={AccountScreen}
+        name="verifyAuth"
+        component={VerifyAuth}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="uploadPic"
+        component={UploadPicScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="login"
+        component={LoginScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="singup"
+        component={SingupScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="myAccount"
+        component={MyAccountScreen}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

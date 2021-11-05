@@ -2,7 +2,8 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SingUp from "../screens/singUp/index"
-import TabNavigation from "../navigation/tabNavigation/index"
+import TabNavigation from "../navigation/tabNavigation/index";
+import AccountStack from './stackAccount';
 
 const Stack = createNativeStackNavigator();
 const optionsScreen = { headerShown: false }
@@ -12,8 +13,8 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="singUp"
-          component={SingUp}
+          name="account"
+          component={AccountStack}
           options={optionsScreen}
         />
         <Stack.Screen

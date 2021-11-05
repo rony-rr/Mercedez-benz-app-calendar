@@ -1,10 +1,10 @@
-import React from 'react'
-import {View} from 'react-native'
-import styles from "./styles"
-import Image from '../../atoms/imageLocal/index'
-import Text from '../../atoms/text/Index'
-import GlobalVars from '../../../global/globalVars'
-import StatusBar  from '../../atoms/statusBar/index'
+import React from 'react';
+import {View} from 'react-native';
+import styles from './styles';
+import Image from '../../atoms/image';
+import Text from '../../atoms/text/index';
+import GlobalVars from '../../../global/globalVars';
+import StatusBar  from '../../atoms/statusBar';
 
 const index = ({label}) => {
   return (
@@ -14,6 +14,7 @@ const index = ({label}) => {
         <Image 
           width={GlobalVars.windowWidth/8}
           height={GlobalVars.windowHeight/8} 
+          img={require('../../../../assets/logo.png')}
           mode='center'
         />
       </View>

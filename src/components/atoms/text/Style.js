@@ -6,7 +6,7 @@ const style = StyleSheet.create({
         textAlign: "center",
         color: "white",
         fontFamily:'Daimler',
-        fontSize: 25,
+      
     },
 });
 

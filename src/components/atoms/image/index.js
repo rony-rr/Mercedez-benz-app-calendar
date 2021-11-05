@@ -7,7 +7,7 @@ const imageLocal = ({width,height,mode,img}) => {
   return (
       <Image
         style={[styles.img,{width:width,height:height}]}
-        source={require("../../../../assets/logo.png")}
+        source={img}
         resizeMode={mode}
       />
   );

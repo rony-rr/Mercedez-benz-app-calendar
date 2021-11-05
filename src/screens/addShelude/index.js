@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import { View, Text,StyleSheet,Image,TouchableOpacity,Modal} from 'react-native'
 import Header from "../../components/molecules/header/index";
-import Logo from "../../components/atoms/imageLocal"
+import Logo from "../../components/atoms/image"
 import { LinearGradient } from 'expo-linear-gradient';
 import Icon from "../../components/atoms/icon/index"
 import {Calendar} from 'react-native-calendars';
