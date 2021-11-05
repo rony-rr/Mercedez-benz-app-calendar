@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import storage from "../../utils/useLocalStorage";
 import Splash from "../../components/templates/splashLoading";
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const index = ({navigation}) => {
  
@@ -10,14 +10,14 @@ const index = ({navigation}) => {
   useEffect(() => {
     getToken('userToken');
   }, []);  
-  
+
   const getToken = async (key) => {
     try {
       const response = await storage.getItemData(key);
       if (response !== null) {
         navigation.navigate('TabNavigation')
       } else {
-        navigation.navigate('Login')
+        navigation.navigate('login')
       }
     } catch (error) {
       console.log(error);

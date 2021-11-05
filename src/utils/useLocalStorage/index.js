@@ -26,13 +26,7 @@ const getItemData = async (key) => {
   //Metodo que nos permite Obtener la informacion de la key del metodo StorageDate
   try {
     const value = await AsyncStorage.getItem(key);
-    if (value !== null) {
-      //Si el valor es igual a null, devolvera value
-      return value;
-    } else {
-      return 2;
-      console.log("error al leer la info");
-    }
+    return value;
   } catch (error) {
     //definimos un catch de error por defecto
     console.log("error al leer la info");
@@ -43,9 +37,10 @@ const clearAll = async () => {
   try {
     await AsyncStorage.clear()
   } catch(e) {
-    console.log(e)
+    // clear error
   }
 
+  console.log('Done.')
 }
 
 
