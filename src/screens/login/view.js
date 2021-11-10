@@ -7,7 +7,7 @@ import Buttom from "../../components/molecules/button";
 import Image from "../../components/atoms/image";
 import Alert from "../../utils/useAlert";
 import LabelBtn from '../../components/molecules/labelTouchable'
-
+import Modal from '../../components/templates/modalLoading'
 const view = ({ onSubmit,onRegister,onHelp,openModal }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -30,6 +30,7 @@ const view = ({ onSubmit,onRegister,onHelp,openModal }) => {
 
   return (
     <View style={styles.view}>
+      <Modal openModal={openModal}/>
       <Image
         img={require("../../../assets/logo.png")}
         width={GlobalVars.windowWidth / 8}

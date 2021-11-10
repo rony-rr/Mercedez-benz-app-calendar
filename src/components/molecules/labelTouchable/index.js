@@ -6,7 +6,7 @@ import styles from './styles';
 const index = (props) => {
     const {label,onPress} = props;
     return (
-        <TouchableOpacity style={styles.btn} >
+        <TouchableOpacity onPress={onPress} style={styles.btn} >
             <Text
             text={label}
             />

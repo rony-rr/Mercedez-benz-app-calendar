@@ -5,6 +5,7 @@ import SingupScreen from '../../screens/singUp'
 import LoginScreen from '../../screens/login'
 import UploadPicScreen from '../../screens/uploadPicProfile'
 import VerifyAuth from '../../screens/verifyAuth'
+import RegisterScreen from '../../screens/register'
 const Stack = createStackNavigator();
 
 export default function AccountStack() {
@@ -18,6 +19,11 @@ export default function AccountStack() {
       <Stack.Screen
         name="uploadPic"
         component={UploadPicScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="register"
+        component={RegisterScreen}
         options={{ headerShown: false }}
       />
       <Stack.Screen
