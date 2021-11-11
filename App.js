@@ -6,7 +6,7 @@ import storage from './src/utils/useLocalStorage'
 const Root = () => {
   const [loadingFonts, setLoadingFonts] = useState(null);
   useFont.loadFonts().then(res=>setLoadingFonts(res));
-  storage.clearAll()
+  // storage.clearAll()
 
   if(loadingFonts == null) return <Splash/>
 
