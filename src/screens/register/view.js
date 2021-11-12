@@ -57,11 +57,14 @@ const view = ({ onSubmit,openModal,errors}) => {
         height={GlobalVars.windowHeight / 8}
         mode="center"
       />
-      <Input placeholder="nombres" changeText={setName} />
-      <Input placeholder="apellidos" changeText={setLastName} />
-      <Input placeholder="email" changeText={setEmail} />
-      <Input placeholder="telefono" changeText={setTel} />
-      <Input placeholder="password" changeText={setPassword} />
+      <Input placeholder="Nombres" changeText={setName} />
+      <Input placeholder="Apellidos" changeText={setLastName} />
+      <Input placeholder="Email" changeText={setEmail} />
+      <Input placeholder="Telefono" changeText={setTel} />
+      <Input placeholder="Placa" changeText={setTel} />
+      <Input placeholder="Modelo" changeText={setTel} />
+      <Input placeholder="Año" changeText={setTel} />
+      <Input placeholder="Password" changeText={setPassword} />
       <Input placeholder="Confirmar password" changeText={setConfirmPassword} />
       <Buttom onSubmit={() => validateData()} label="Confirmar" />
     </ScrollView>
