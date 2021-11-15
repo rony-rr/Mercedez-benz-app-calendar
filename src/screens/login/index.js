@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import Login from "./view";
 import fetchHook from "../../utils/useFetch";
 import GlobalVars from "../../global/globalVars";
-import storage from '../../utils/useLocalStorage'
-import Alert from '../../utils/useAlert';
+import storage from "../../utils/useLocalStorage";
+import Alert from "../../utils/useAlert";
 
 const index = ({ navigation }) => {
   const [openModal, setOpenModal] = useState(false);
@@ -15,8 +15,8 @@ const index = ({ navigation }) => {
     try {
       const response = await fetchHook.fetchPost(urlLogin, data);
       if (response.status == true) {
-        storage.storeData('userInfo',response.user);
-        storage.storeData('userToken',response.token);
+        storage.storeData("userInfo", response.user);
+        storage.storeData("userToken", response.token);
         setOpenModal(false);
         navigation.navigate("TabNavigation");
       } else {
@@ -28,9 +28,16 @@ const index = ({ navigation }) => {
     }
   };
 
-  const onRegister =()=> navigation.navigate("register")
+  const onRegister = () => navigation.navigate("register");
 
-  return <Login openModal={openModal} onSubmit={login} onRegister={onRegister} />;
+  return (
+    <Login
+      openModal={openModal}
+      onSubmit={login}
+      onRegister={onRegister}
+      navigation={navigation}
+    />
+  );
 };
 
 export default index;

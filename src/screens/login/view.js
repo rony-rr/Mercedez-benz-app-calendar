@@ -1,23 +1,33 @@
 import React, { useState } from "react";
 import { View } from "react-native";
-import styles from "./styles";
+
+import { SafeAreaView } from "react-native-safe-area-context";
+
+/** Variables globales */
 import GlobalVars from "../../global/globalVars";
-import Input from "../../components/atoms/input";
-import Buttom from "../../components/molecules/button";
-import Image from "../../components/atoms/image";
+
+/** Utils */
 import Alert from "../../utils/useAlert";
-import LabelBtn from '../../components/molecules/labelTouchable'
-import Modal from '../../components/templates/modalLoading'
-const view = ({ onSubmit,onRegister,onHelp,openModal }) => {
+
+/** Componentes */
+import StatusBar from "../../components/atoms/statusBar";
+import Input from "../../components/atoms/input";
+import Image from "../../components/atoms/image";
+import Buttom from "../../components/molecules/button";
+import LabelBtn from "../../components/molecules/labelTouchable";
+import Modal from "../../components/templates/modalLoading";
+
+/** Estilos */
+import styles from "./styles";
+
+const LoginScreen = ({ onSubmit, onRegister, onHelp, openModal }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
 
   const data = {
     email: email,
     password: password,
   };
-
 
   const validateData = () => {
     if (email.length == 0 || password.length == 0) {
@@ -27,10 +37,14 @@ const view = ({ onSubmit,onRegister,onHelp,openModal }) => {
     }
   };
 
-
   return (
-    <View style={styles.view}>
-      <Modal openModal={openModal}/>
+    <SafeAreaView style={styles.view}>
+      <StatusBar
+        color="white"
+        styleBar="light-content"
+        statusTransition="slide"
+      />
+      <Modal openModal={openModal} />
       <Image
         img={require("../../../assets/logo.png")}
         width={GlobalVars.windowWidth / 8}
@@ -38,20 +52,14 @@ const view = ({ onSubmit,onRegister,onHelp,openModal }) => {
         mode="center"
       />
       <Input placeholder="Ingresar correo" changeText={setEmail} />
-      <Input placeholder="Ingresar password" changeText={setPassword} />
+      <Input placeholder="Ingresar contraseña" changeText={setPassword} />
       <Buttom onSubmit={() => validateData()} label="Acceder" />
       <View style={styles.footer}>
-        <LabelBtn
-          onPress={onRegister}
-          label='Registrarme'
-        /> 
-        <LabelBtn
-          label='Necesitas ayuda?'
-          onPress={onHelp}
-        />         
+        <LabelBtn onPress={onRegister} label="Registrarme" />
+        <LabelBtn label="Necesitas ayuda?" onPress={onHelp} />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
-export default view;
+export default LoginScreen;
