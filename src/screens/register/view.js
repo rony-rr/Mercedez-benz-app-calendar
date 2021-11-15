@@ -17,18 +17,26 @@ import Image from "../../components/atoms/image";
 import Textos from "../../components/atoms/text";
 import Buttom from "../../components/molecules/button";
 import Modal from "../../components/templates/modalLoading";
-
+import Errors from "../../components/templates/modalErrors";
 /** Estilos */
 import styles from "./styles";
 
-const RegisterScreen = ({ navigation, onSubmit, openModal, errors }) => {
-  const [name, setName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [tel, setTel] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+const RegisterScreen = ({ onSubmitError,navigation, onSubmit, openModal, errorsRegister,errorsVisible }) => {
+  // const [name, setName] = useState("");
+  // const [lastName, setLastName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [tel, setTel] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [confirmPassword, setConfirmPassword] = useState("");
 
+  const [name, setName] = useState("sss");
+  const [lastName, setLastName] = useState("sss");
+  const [email, setEmail] = useState("jaesssrrr@gmail.com");
+  const [tel, setTel] = useState("12345678");
+  const [password, setPassword] = useState("123456789");
+  const [confirmPassword, setConfirmPassword] = useState("123456789");
+
+ 
   const data = {
     name: name,
     last_name: lastName,
@@ -62,6 +70,11 @@ const RegisterScreen = ({ navigation, onSubmit, openModal, errors }) => {
         color="white"
         styleBar="light-content"
         statusTransition="slide"
+      />
+      <Errors 
+        visible={errorsVisible}
+        errors={errorsRegister}
+        onSubmit={onSubmitError}
       />
       <Modal openModal={openModal} />
       <Image

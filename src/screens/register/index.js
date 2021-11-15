@@ -13,33 +13,42 @@ import Register from "./view";
 
 const Index = ({ navigation }) => {
   const [openModal, setOpenModal] = useState(false);
-  const [errors, setErrors] = useState();
+  const [errorsRegister, setErrorsRegister] = useState([]);
+  const [errorsVisible, setErrorsVisible] = useState(false)
   const urlRegister = `${GlobalVars.urlApi}register`;
 
   const register = async (data) => {
     setOpenModal(true);
     try {
       const response = await fetchHook.fetchPost(urlRegister, data);
+      console.log(response)
       if (response.status == true) {
         storage.storeData("userInfo", response.user);
         storage.storeData("userToken", response.token);
         setOpenModal(false);
-        navigation.navigate("TabNavigation");
+        navigation.navigate("uploadPic");
       } else {
-        setErrors(response.errors);
+        setErrorsRegister(Object.values(response.errors));
+        console.log(Object.values(response.errors))
+        setErrorsVisible(true)
         setOpenModal(false);
-        Alert("Mensaje", "error");
       }
     } catch (error) {
       console.log(error);
     }
   };
+
+  const viewErrors = ()=>{
+    setErrorsVisible(false)
+  }
   return (
     <Register
       onSubmit={register}
       openModal={openModal}
       navigation={navigation}
-      errors={errors}
+      errorsRegister={errorsRegister}
+      errorsVisible={errorsVisible}
+      onSubmitError={viewErrors}
     />
   );
 };

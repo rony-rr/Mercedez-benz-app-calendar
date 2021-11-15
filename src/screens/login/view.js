@@ -52,7 +52,7 @@ const LoginScreen = ({ onSubmit, onRegister, onHelp, openModal }) => {
         mode="center"
       />
       <Input placeholder="Ingresar correo" changeText={setEmail} />
-      <Input placeholder="Ingresar contraseña" changeText={setPassword} />
+      <Input placeholder="Ingresar contraseña" changeText={setPassword} secure={true} />
       <Buttom onSubmit={() => validateData()} label="Acceder" />
       <View style={styles.footer}>
         <LabelBtn onPress={onRegister} label="Registrarme" />

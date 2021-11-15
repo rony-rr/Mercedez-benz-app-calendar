@@ -1,11 +1,12 @@
 import React from 'react'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { TouchableOpacity ,View} from 'react-native'
 import Text from '../../atoms/text'
 import styles from './styles'
 const index = (props) => {
   const { label, onSubmit } = props;
   return (
-    <TouchableOpacity
+    <View>
+      <TouchableOpacity
       style={styles.btn}
       onPress={onSubmit}
     >
@@ -14,6 +15,7 @@ const index = (props) => {
         size={20}
       />
     </TouchableOpacity>
+    </View>
   )
 }
 
