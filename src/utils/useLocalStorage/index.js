@@ -19,7 +19,7 @@ const removeItem = async (key) => {
 const getItem = async (key) => {
   try {
     const value = await AsyncStorage.getItem(key);
-    return value;
+    return value != null ? JSON.parse(value) : null;
   } catch (error) {
     console.log(error);
   }

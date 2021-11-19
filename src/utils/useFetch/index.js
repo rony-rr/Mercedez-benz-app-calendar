@@ -1,5 +1,5 @@
 
-const fetchPost = async (url,data) => {
+const fetchPost = async (url, data) => {
   try {
     const response = await fetch(url, {
       method: 'POST',
@@ -16,8 +16,27 @@ const fetchPost = async (url,data) => {
   }
 }
 
+const fetchGet = async (url, token) => {
+
+  try {
+    console.log(url)
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer '+token
+      }
+    });
+  const responseJson = await response.json();
+  return responseJson;
+} catch (error) {
+  console.warn(error);
+}
+}
+
+
 const fetchHook = {
-  fetchPost
+  fetchPost,
+  fetchGet
 };
 
 
