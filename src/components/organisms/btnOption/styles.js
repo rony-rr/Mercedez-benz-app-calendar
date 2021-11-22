@@ -1,24 +1,8 @@
 import { StyleSheet } from "react-native";
-import GlobalVars from "../../global/globalVars";
+import GlobalVars from "../../../global/globalVars"
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'black',
-  },
-  background: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    height: GlobalVars.windowHeight,
-  },
-  imgProfile:{
-    marginTop:10,
-    borderRadius:50,
-    height:90,
-    width:90
+    alignItems:'center'
   },
   cardContentIcon:{
     width:'30%',

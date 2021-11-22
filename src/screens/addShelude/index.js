@@ -6,6 +6,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import Icon from "../../components/atoms/icon/index"
 import {Calendar} from 'react-native-calendars';
 import GlobalVars from '../../global/globalVars';
+
 const index = () => {
   const [mes, setMes] = useState("Julio")
   const [modalV, setModalV] = useState(false)
@@ -51,15 +52,6 @@ const index = () => {
         <Calendar
         style={{width:GlobalVars.windowWidth/1.2}}
         markingType={'period'}
-        markedDates={{
-        '2021-28-10': {marked: true, dotColor: '#50cebb'},
-        '2012-05-16': {marked: true, dotColor: '#50cebb'},
-        '2012-05-21': {startingDay: true, color: '#50cebb', textColor: 'white'},
-        '2012-05-22': {color: '#70d7c7', textColor: 'white'},
-        '2012-05-23': {color: '#70d7c7', textColor: 'white', marked: true, dotColor: 'white'},
-        '2012-05-24': {color: '#70d7c7', textColor: 'white'},
-        '2012-05-25': {endingDay: true, color: '#50cebb', textColor: 'white'}
-        }}
         />
         <View style={{flexDirection:'row',marginVertical:15}}>
        
