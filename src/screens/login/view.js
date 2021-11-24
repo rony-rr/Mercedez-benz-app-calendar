@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View } from "react-native";
+import { View, Platform } from "react-native";
 
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -40,8 +40,8 @@ const LoginScreen = ({ onSubmit, onRegister, onHelp, openModal }) => {
   return (
     <SafeAreaView style={styles.view}>
       <StatusBar
-        color="white"
-        styleBar="light-content"
+        color={GlobalVars.black}
+        styleBar={Platform.OS === "android" ? "light-content" :"light-content"}
         statusTransition="slide"
       />
       <Modal openModal={openModal} />

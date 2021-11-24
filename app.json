@@ -1,14 +1,19 @@
 {
   "expo": {
-    "name": "template",
-    "slug": "template",
+    "name": "Experiencia Mercedes Benz",
+    "description": "App de reverva de citas",
+    "slug": "experiencia-mercedes-benz",
     "version": "1.0.0",
     "orientation": "portrait",
+    "primaryColor": "#cccccc",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "cover",
       "backgroundColor": "#000"
+    },
+    "packagerOpts": {
+      "assetExts": ["ttf"]
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -17,13 +22,20 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.mercedesbenz.sv.appreservas",
+      "buildNumber": "1.0.0",
       "supportsTablet": true
     },
     "android": {
+      "versionCode": 1,
+      "package": "com.mercedesbenz.sv.appreservas",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#000"
       }
+    },
+    "androidStatusBar" : {
+      "backgroundColor" : "#000"
     },
     "web": {
       "favicon": "./assets/favicon.png"

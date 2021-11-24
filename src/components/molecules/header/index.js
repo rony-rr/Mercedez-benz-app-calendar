@@ -1,31 +1,31 @@
-import React from 'react';
-import {View} from 'react-native';
-import styles from './styles';
-import Image from '../../atoms/image';
-import Text from '../../atoms/text';
-import GlobalVars from '../../../global/globalVars';
-import StatusBar  from '../../atoms/statusBar';
+import React from "react";
+import { View } from "react-native";
 
-const index = ({label}) => {
+/** Variables globales */
+import GlobalVars from "../../../global/globalVars";
+
+/** Componentes */
+import Image from "../../atoms/image";
+import Text from "../../atoms/text";
+
+import styles from "./styles";
+
+const Header = ({ label }) => {
   return (
     <View style={styles.view}>
-       <StatusBar color='black'/>
       <View style={styles.headerContentLogo}>
-        <Image 
-          width={GlobalVars.windowWidth/8}
-          height={GlobalVars.windowHeight/8} 
-          img={require('../../../../assets/logo.png')}
-          mode='center'
+        <Image
+          width={GlobalVars.windowWidth / 8}
+          height={GlobalVars.windowWidth / 8}
+          img={require("../../../../assets/logo.png")}
+          mode="center"
         />
       </View>
       <View style={styles.headerContentLabel}>
-        <Text 
-          text={label}
-        />
+        <Text text={label} />
       </View>
-      
     </View>
-  )
-}
+  );
+};
 
-export default index
+export default Header;

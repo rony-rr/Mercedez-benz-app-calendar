@@ -1,11 +1,16 @@
-import React,{useState,useEffect} from 'react'
-import storage from '../../utils/useLocalStorage';
-import fetchHook from '../../utils/useFetch';
-import GlobalVars from '../../global/globalVars';
-import Shop from './view'
+import React, { useState, useEffect } from "react";
 
-const index = ({navigation}) => {
+/** Utils */
+import storage from "../../utils/useLocalStorage";
+import fetchHook from "../../utils/useFetch";
 
+/** Variables Globales */
+import GlobalVars from "../../global/globalVars";
+
+/** Componentes */
+import Shop from "./view";
+
+const index = ({ navigation }) => {
   const [dataProduct, setDataProduct] = useState([]);
 
   useEffect(() => {
@@ -15,9 +20,8 @@ const index = ({navigation}) => {
   const getToken = async (key) => {
     try {
       const response = await storage.getItem(key);
-     
       if (response !== null) {
-        getProducts(response)
+        getProducts(response);
       } else {
         navigation.navigate("login");
       }
@@ -29,22 +33,18 @@ const index = ({navigation}) => {
   const getProducts = async (token) => {
     const urlProducts = `${GlobalVars.urlApi}products`;
     try {
-      const response = await fetchHook.fetchGet(urlProducts,token);
-      if(response.status){
-        setDataProduct(response.products)
-      }else{
-        alert('Error')
+      const response = await fetchHook.fetchGet(urlProducts, token);
+      if (response.status) {
+        setDataProduct(response.products);
+      } else {
+        alert("Error");
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-  return (
-    <Shop 
-      data={dataProduct}
-    />
-  )
-}
+  return <Shop data={dataProduct} />;
+};
 
-export default index
+export default index;

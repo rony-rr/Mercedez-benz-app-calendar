@@ -67,8 +67,8 @@ const RegisterScreen = ({ onSubmitError,navigation, onSubmit, openModal, errorsR
   return (
     <SafeAreaView style={styles.root}>
       <StatusBar
-        color="white"
-        styleBar="light-content"
+        color={GlobalVars.black}
+        styleBar={Platform.OS === "android" ? "light-content" :"light-content"}
         statusTransition="slide"
       />
       <Errors 
