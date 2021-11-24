@@ -26,8 +26,6 @@ const index = ({navigation}) => {
           const dataUser =(JSON.parse(user))
 
           const token = JSON.parse(getToken)
-          console.log(token)
-          console.log(fileUri)
           formData.append('profile_picture', { uri: fileUri, name: filename, type });
           formData.append("_method", "PUT");
           try {

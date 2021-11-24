@@ -1,13 +1,15 @@
 import React from 'react'
-import { TouchableOpacity } from 'react-native'
+import { TouchableOpacity ,View} from 'react-native'
 import styles from './styles'
 import Image from '../../atoms/image'
 import GlobalVars from '../../../global/globalVars'
 import Modal from '../../templates/modalProduct'
+import Texto from '../../atoms/text'
 const index = ({img,onSubmit,data}) => {
-  
+    
   return (
-    <TouchableOpacity 
+    <View>
+      <TouchableOpacity 
     onPress={()=>onSubmit(data)}
     style={styles.card}
     >
@@ -19,6 +21,10 @@ const index = ({img,onSubmit,data}) => {
           mode='contain'
         />
     </TouchableOpacity>
+    <Texto
+      text={data.title}
+    />
+    </View>
   )
 }
 

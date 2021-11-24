@@ -8,8 +8,8 @@ const index = ({ img, data }) => {
     <View style={styles.view}>
       <Image
         img={{ uri: img }}
-        width={GlobalVars.windowWidth / 2.8}
-        height={GlobalVars.windowHeight / 5.5}
+        width={GlobalVars.windowWidth /3.5}
+        height={GlobalVars.windowHeight /6}
         mrTop={10}
         radius={70}
       />

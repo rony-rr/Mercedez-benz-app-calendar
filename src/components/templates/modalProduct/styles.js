@@ -14,12 +14,13 @@ const styles = StyleSheet.create({
   },
   centeredView: {
     flex: 1,
-    backgroundColor:'black'
+    backgroundColor:'black',
+    padding:20
   },
   btn:{
     backgroundColor:'#31CA25',
-    width:"40%",
-    paddingVertical:10,
+    width:"45%",
+    paddingVertical:5,
     justifyContent:'center',
     flexDirection:'row',
     borderRadius:10,

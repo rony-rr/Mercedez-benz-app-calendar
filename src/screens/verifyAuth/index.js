@@ -13,7 +13,6 @@ const index = ({ navigation }) => {
     try {
       const response = await storage.getItem(key);
       if (response !== null) {
-        console.log(response)
         navigation.navigate("TabNavigation");
       } else {
         navigation.navigate("login");
