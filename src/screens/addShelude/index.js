@@ -13,7 +13,10 @@ const index = ({onSubmit}) => {
   const [token, setToken] = useState(null)
   const urlDays = `${GlobalVars.urlApi}days_off`;
   const urlCita ='https://experienciamercedes.com/mbconnect/admin/api/v1/appointments';
+  const urlVerificarHorario ='https://experienciamercedes.com/mbconnect/admin/api/v1/available_schedule/';
+  const [horarios, setHorarios] = useState([])
   let days;
+
   useEffect(() => {
     getToken("userToken");
   }, [])
@@ -50,7 +53,7 @@ const index = ({onSubmit}) => {
 
 
   const addShelude =async(data) =>{
-
+   
     try {
       const response = await fetchHook.fetchPost(urlCita,data,token);
       if(response.status == true){
@@ -62,10 +65,23 @@ const index = ({onSubmit}) => {
       console.log(error);
     }
   }
+
+  const verificarHorarios = async (dia) =>{
+    const url = urlVerificarHorario+dia.date
+    
+    try {
+      const response = await fetchHook.fetchGet(url,token);
+      setHorarios(response.disponibles)
+    } catch (error) {
+      console.log(error);
+    }
+  }
     return (
       <AddShelude
           days={days}
-          onSubmit={addShelude}
+          horarios={horarios}
+          onSubmit={verificarHorarios}
+         
       />
     )
   

@@ -9,7 +9,7 @@ import Icon from '../../components/atoms/icon'
 import Texto from '../../components/atoms/text'
 import Buttom from "../../components/molecules/button";
 
-const view = ({onSubmit}) => {
+const view = ({onSubmit,horarios}) => {
   const [data, setData] = useState()
   const change =(x)=>{    
     setData({ 

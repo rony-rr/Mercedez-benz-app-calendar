@@ -35,9 +35,11 @@ const fetchGet = async (url, token) => {
 }
 
 
+
+
 const fetchHook = {
   fetchPost,
-  fetchGet
+  fetchGet,
 };
 
 
