@@ -13,7 +13,7 @@ const index = ({navigation}) => {
   
   const [imageProfile, setImageProfile] = useState(null);
   const [dataUser, setDataUser] = useState([ ]);
-
+  const [dataCita, setDataCita] = useState();
   useEffect(() => {
     getToken("userToken","userInfo");
   }, []);
@@ -24,6 +24,7 @@ const index = ({navigation}) => {
       const infoUser = await storage.getItem(info);
       if (response !== null) {
         getPicture(response)
+        getCita(response)
         setDataUser(infoUser)
       } else {
         navigation.navigate("login");
@@ -42,20 +43,28 @@ const index = ({navigation}) => {
       console.log(error);
     }
   };
-  
-  const onSubmit = (screen) =>{
-    if(screen == 'link'){
-      Linking.openURL("https://www.google.com.sv");
-    }else{
-      navigation.navigate(screen)
+
+  const getCita = async (token) =>{
+    const urlCitas = `https://experienciamercedes.com/mbconnect/admin/api/v1/appointments`;
+    try {
+      const response = await fetchHook.fetchGet(urlCitas, token);
+      if(response !== null){
+        setDataCita(response.appointments[response.appointments.length-1])
+      }else{
+        console.log('si citas')
+      }
+    } catch (error) {
+      console.log(error);
     }
-    
   }
+  
+
   return (
     <Home
       imgProfile={imageProfile}
       dataUser={dataUser}
-      onSubmit={onSubmit}
+      cita={dataCita}
+      
     />
   )
 }

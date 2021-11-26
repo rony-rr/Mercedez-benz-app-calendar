@@ -14,7 +14,7 @@ import Alert from "../../utils/useAlert";
 import StatusBar from "../../components/atoms/statusBar";
 import Input from "../../components/atoms/input";
 import Image from "../../components/atoms/image";
-import Textos from "../../components/atoms/text";
+import Textos from "../../components/atoms//text";
 import Buttom from "../../components/molecules/button";
 import Modal from "../../components/templates/modalLoading";
 import Errors from "../../components/templates/modalErrors";

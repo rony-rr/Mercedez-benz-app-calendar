@@ -10,7 +10,7 @@ import ImgProfile from "../../components/molecules/imgProfile";
 import BtnOption from "../../components/organisms/btnOption";
 import Input from "../../components/atoms/input";
 
-const index = ({ imgProfile, dataUser, onSubmit }) => {
+const index = ({ imgProfile, dataUser, onSubmit ,cita}) => {
   return (
   <View style={styles.container}>
    

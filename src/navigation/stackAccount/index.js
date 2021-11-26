@@ -11,9 +11,14 @@ const Stack = createStackNavigator();
 export default function AccountStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen
+      {/* <Stack.Screen
         name="verifyAuth"
         component={VerifyAuth}
+        options={{ headerShown: false }}
+      /> */}
+      <Stack.Screen
+        name="myAccount"
+        component={MyAccountScreen}
         options={{ headerShown: false }}
       />
       <Stack.Screen
@@ -36,11 +41,7 @@ export default function AccountStack() {
         component={SingupScreen}
         options={{ headerShown: false }}
       />
-      <Stack.Screen
-        name="myAccount"
-        component={MyAccountScreen}
-        options={{ headerShown: false }}
-      />
+      
     </Stack.Navigator>
   );
 }

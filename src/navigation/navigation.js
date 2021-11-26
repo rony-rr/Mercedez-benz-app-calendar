@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SingUp from "../screens/singUp/index"
 import TabNavigation from "../navigation/tabNavigation/index";
 import AccountStack from './stackAccount';
-
+import VerifyScreen from '../screens/verifyAuth'
 const Stack = createNativeStackNavigator();
 const optionsScreen = { headerShown: false }
 function App() {
@@ -12,6 +12,11 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+      <Stack.Screen
+          name="verifyAuth"
+          component={VerifyScreen}
+          options={optionsScreen}
+        />
         <Stack.Screen
           name="account"
           component={AccountStack}

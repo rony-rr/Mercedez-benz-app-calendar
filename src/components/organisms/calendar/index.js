@@ -14,7 +14,7 @@ const data =
 
 
 const index = ({days,onSubmit}) => {
-
+  console.log(days)
   
   const INITIAL_DATE = useDate.fechaActual;
   const [selected, setSelected] = useState(INITIAL_DATE);
@@ -49,12 +49,13 @@ const index = ({days,onSubmit}) => {
           onDayPress={onDayPress}
           minDate={useDate.fechaActual}
           markedDates={{
+            ...days,
             [selected]: {
               selected: true,
               disableTouchEvent: true,
               selectedColor: '#6BE142',
               selectedTextColor: 'white'
-            },...days
+            }
           }}
         />
     </View>

@@ -60,11 +60,12 @@ const index = ({onSubmit,navigation}) => {
 
 
   const addShelude =async(data) =>{
-   console.log(data)
+   
     try {
       const response = await fetchHook.fetchPost(urlCita,data,token);
+      console.log(response)
       if(response.status == true){
-        navigation.navigate("myAccount");
+        navigation.navigate("account");
       }else{
         Alert('error')
       }
@@ -73,12 +74,26 @@ const index = ({onSubmit,navigation}) => {
     }
   }
 
+
+  const verificarCitas = async (data)=>{
+    try {
+      const response = await fetchHook.fetchGet(urlCita,token);
+      let res = response.appointments[response.appointments.length-1];
+      if(res.status == 1){
+        Alert('Aviso','Ya cuentas con una cita pendiente')
+      }else{
+        addShelude(data)
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const verificarHorarios = async (dia) =>{
     const url = urlVerificarHorario+dia.date
-    console.log(dia)
     try {
       const response = await fetchHook.fetchGet(url,token);
- 
+      console.log(response)
        const s =[ ]
        response.disponibles.map((item,index)=>{
         s.push(item.time)
@@ -97,7 +112,7 @@ const index = ({onSubmit,navigation}) => {
           days={days}
           horarios={horarios}
           onSubmit={verificarHorarios}
-          confirmar={addShelude}
+          confirmar={verificarCitas}
           vhorario={verificandoHorario}
           arrayHorarios={arrayHorarios}
           user={userInfo.id}

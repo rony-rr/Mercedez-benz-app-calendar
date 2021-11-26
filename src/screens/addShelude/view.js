@@ -11,19 +11,18 @@ import Buttom from "../../components/molecules/button";
 import SelectDropdown from "react-native-select-dropdown";
 const view = ({user,onSubmit,horarios,confirmar,vhorario,arrayHorarios}) => {
   const [indexH, setindexH] = useState(0)
-  
-  
+  console.log(horarios)
   const [data, setData] = useState()
   const change =(x)=>{    
     onSubmit({ 
       date: x,
-      schedule_id: indexH,
+      schedule_id: indexH+1,
       user_id: user,
       maintenance_description: "dev"
     })
     setData({ 
       date: x,
-      schedule_id: indexH,
+      schedule_id: indexH+1,
       user_id: user,
       maintenance_description: "dev"
     })
@@ -54,7 +53,7 @@ const view = ({user,onSubmit,horarios,confirmar,vhorario,arrayHorarios}) => {
             />
           </View>
         </View>
-        <SelectDropdown
+        {horarios.length > 0  && <SelectDropdown
         data={horarios}
         defaultButtonText='Horarios Disponibles'
         onSelect={(selectedItem, index) => {
@@ -66,7 +65,7 @@ const view = ({user,onSubmit,horarios,confirmar,vhorario,arrayHorarios}) => {
         rowTextForSelection={(item, index) => {
         return item
         }}
-        />
+        />}
         {vhorario &&  <Buttom onSubmit={() =>confirmar(data)} label="Agendar Cita" />}
        
         </ScrollView>
