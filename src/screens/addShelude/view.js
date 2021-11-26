@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {View} from 'react-native'
+import {View,ScrollView} from 'react-native'
 import Header from "../../components/molecules/header/index";
 import { LinearGradient } from 'expo-linear-gradient';
 import GlobalVars from '../../global/globalVars';
@@ -8,23 +8,33 @@ import Calendar from '../../components/organisms/calendar'
 import Icon from '../../components/atoms/icon'
 import Texto from '../../components/atoms/text'
 import Buttom from "../../components/molecules/button";
-
-const view = ({onSubmit,horarios}) => {
+import SelectDropdown from "react-native-select-dropdown";
+const view = ({user,onSubmit,horarios,confirmar,vhorario,arrayHorarios}) => {
+  const [indexH, setindexH] = useState(0)
+  
+  
   const [data, setData] = useState()
   const change =(x)=>{    
+    onSubmit({ 
+      date: x,
+      schedule_id: indexH,
+      user_id: user,
+      maintenance_description: "dev"
+    })
     setData({ 
       date: x,
-      schedule_id: 1,
-      user_id: 1,
-      maintenance_description: "testing"
+      schedule_id: indexH,
+      user_id: user,
+      maintenance_description: "dev"
     })
   }
   return (
-    <View style={styles.container}>
+    
       <LinearGradient
         colors={['rgba(74,89,95,0.5)', 'black']}
-        style={{ width: GlobalVars.windowWidth, height:GlobalVars.windowHeight/1.2,alignItems:'center' }}
+        style={{ width: GlobalVars.windowWidth, height:GlobalVars.windowHeight }}
       >
+        <ScrollView style={styles.container} contentContainerStyle={{alignItems:'center'}}>
         <Header label='Agendar Cita'/>
         <Calendar
           onSubmit={change}
@@ -44,10 +54,25 @@ const view = ({onSubmit,horarios}) => {
             />
           </View>
         </View>
-        <Buttom onSubmit={() =>onSubmit(data)} label="Agendar Cita" />
+        <SelectDropdown
+        data={horarios}
+        defaultButtonText='Horarios Disponibles'
+        onSelect={(selectedItem, index) => {
+          setindexH(arrayHorarios[index].id)
+        }}
+        buttonTextAfterSelection={(selectedItem, index) => {
+        return selectedItem
+        }}
+        rowTextForSelection={(item, index) => {
+        return item
+        }}
+        />
+        {vhorario &&  <Buttom onSubmit={() =>confirmar(data)} label="Agendar Cita" />}
+       
+        </ScrollView>
       </LinearGradient>
       
-    </View>
+ 
   )
 }
 

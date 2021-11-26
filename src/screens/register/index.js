@@ -29,7 +29,7 @@ const Index = ({ navigation }) => {
         navigation.navigate("uploadPic");
       } else {
         setErrorsRegister(Object.values(response.errors));
-        console.log(Object.values(response.errors))
+        (Object.values(response.errors))
         setErrorsVisible(true)
         setOpenModal(false);
       }

@@ -17,10 +17,10 @@ const fetchPost = async (url, data,token) => {
   }
 }
 
-const fetchGet = async (url, token) => {
+const fetchGet = async (url,token) => {
 
   try {
-    console.log(url)
+
     const response = await fetch(url, {
       method: 'GET',
       headers: {

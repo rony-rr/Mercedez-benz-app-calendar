@@ -1,94 +1,63 @@
-import React from 'react'
-import { View, Text,StyleSheet,Image,TextInput} from 'react-native'
-import Header from "../../components/molecules/header/index"
-import { LinearGradient } from 'expo-linear-gradient';
-import Icon from "../../components/atoms/icon/index"
+import React, { useEffect, useState } from "react";
+import {Linking} from "react-native";
+
+// Variables globales
 import GlobalVars from '../../global/globalVars';
+// Utils
+import fetchHook from "../../utils/useFetch";
+import storage from "../../utils/useLocalStorage";
+// Views
+import Home from './view'
 
-const index = () => {
-  return (
-  <View style={styles.container}>
-   
-    <LinearGradient
-      // Background Linear Gradient
-      colors={['rgba(74,89,95,0.5)', 'black']}
-      style={styles.background}
-    >
-       <Header label='Perfil'/>
-       <View style={{alignItems:'center'}}>
-        <Image
-          style={styles.imgProfile}
-          source={{
-            uri: 'https://yt3.ggpht.com/ytc/AKedOLSlQErlIOYqfiFq8WIXGs4r54Om_EUc0cdmSF8G=s900-c-k-c0x00ffffff-no-rj',
-          }}
-        />
-        <Text style={{color:'white',fontSize:18,marginVertical:10}}>Sergio Matti</Text>
-        <Text style={{color:'white',fontSize:12,marginVertical:10,marginHorizontal:50}}>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.</Text>
-       </View>
+const index = ({navigation}) => {
+  
+  const [imageProfile, setImageProfile] = useState(null);
+  const [dataUser, setDataUser] = useState([ ]);
 
-      <View style={{width:GlobalVars.windowWidth,alignItems:'center'}}>
-      <Text style={{color:'white',fontSize:18,marginVertical:10}}>Mi Mercedes</Text>
-      <TextInput
-        placeholder='Cita pendiente / 05/08/2021'
-        placeholderTextColor='grey'
-        editable={false}
-        style={styles.input}
-      />
-      <TextInput
-        placeholder='Mercedes CLA Coupé'
-        placeholderTextColor='grey'
-        editable={false}
-        style={styles.input}
-      />
-      <TextInput
-        placeholder='Año del vehículo 2019'
-        placeholderTextColor='grey'
-        editable={false}
-        style={styles.input}
-      />
-       <TextInput
-        placeholder='Placa del vehículo'
-        placeholderTextColor='grey'
-        editable={false}
-        style={styles.input}
-      />
-      </View>
+  useEffect(() => {
+    getToken("userToken","userInfo");
+  }, []);
+
+  const getToken = async (token,info) => {
+    try {
+      const response = await storage.getItem(token);
+      const infoUser = await storage.getItem(info);
+      if (response !== null) {
+        getPicture(response)
+        setDataUser(infoUser)
+      } else {
+        navigation.navigate("login");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getPicture = async (token) => {
+    const urlPicture = `${GlobalVars.urlApi}uri`;
+    try {
+      const response = await fetchHook.fetchGet(urlPicture, token);
+      setImageProfile(response.data)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
+  const onSubmit = (screen) =>{
+    if(screen == 'link'){
+      Linking.openURL("https://www.google.com.sv");
+    }else{
+      navigation.navigate(screen)
+    }
     
-       
-    </LinearGradient>
-   
-  </View>
+  }
+  return (
+    <Home
+      imgProfile={imageProfile}
+      dataUser={dataUser}
+      onSubmit={onSubmit}
+    />
   )
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'black',
-  },
-  background: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    height: GlobalVars.windowHeight,
-  },
-  imgProfile:{
-    marginTop:15,
-    borderRadius:50,
-    height:90,
-    width:90
-  },
-  input:{
-    marginTop:40,
-    textAlign:'left',
-    color:'white',
-    fontSize:20,
-    width:'90%',
-    borderBottomWidth:0.5,
-    borderColor:'white'
-  },
-  
-});
+
 export default index

@@ -6,11 +6,15 @@ import TemplateLoading from '../../components/templates/splashLoading'
 import fetchHook from '../../utils/useFetch'
 import storage from '../../utils/useLocalStorage'
 import useDate from '../../utils/useDate'
+import Alert from '../../utils/useAlert'
 // Global values
 import GlobalVars from '../../global/globalVars';
 
-const index = ({onSubmit}) => {
+const index = ({onSubmit,navigation}) => {
   const [token, setToken] = useState(null)
+  const [arrayHorarios, setarrayHorarios] = useState([])
+  const [userInfo, setUserInfo] = useState({id: ''})
+  const [verificandoHorario, setverificandoHorario] = useState(false)
   const urlDays = `${GlobalVars.urlApi}days_off`;
   const urlCita ='https://experienciamercedes.com/mbconnect/admin/api/v1/appointments';
   const urlVerificarHorario ='https://experienciamercedes.com/mbconnect/admin/api/v1/available_schedule/';
@@ -18,14 +22,17 @@ const index = ({onSubmit}) => {
   let days;
 
   useEffect(() => {
-    getToken("userToken");
+    getToken("userToken","userInfo");
   }, [])
 
-  const getToken = async (key) => {
+  const getToken = async (key,key2) => {
     try {
       const response = await storage.getItem(key);
+      const response2 = await storage.getItem(key2);
+    
       if (response !== null) {
-        getDaysOff(response)
+        getDaysOff(response)         
+        setUserInfo(response2)
         setToken(response)
       } else {
         navigation.navigate("login");
@@ -53,13 +60,13 @@ const index = ({onSubmit}) => {
 
 
   const addShelude =async(data) =>{
-   
+   console.log(data)
     try {
       const response = await fetchHook.fetchPost(urlCita,data,token);
       if(response.status == true){
-        alert('Cita agendada')
+        navigation.navigate("myAccount");
       }else{
-        alert('error')
+        Alert('error')
       }
     } catch (error) {
       console.log(error);
@@ -68,20 +75,32 @@ const index = ({onSubmit}) => {
 
   const verificarHorarios = async (dia) =>{
     const url = urlVerificarHorario+dia.date
-    
+    console.log(dia)
     try {
       const response = await fetchHook.fetchGet(url,token);
-      setHorarios(response.disponibles)
+ 
+       const s =[ ]
+       response.disponibles.map((item,index)=>{
+        s.push(item.time)
+      })
+      setHorarios(s)
+      setarrayHorarios(response.disponibles)
+      setverificandoHorario(true)
     } catch (error) {
       console.log(error);
     }
   }
+
+  
     return (
       <AddShelude
           days={days}
           horarios={horarios}
           onSubmit={verificarHorarios}
-         
+          confirmar={addShelude}
+          vhorario={verificandoHorario}
+          arrayHorarios={arrayHorarios}
+          user={userInfo.id}
       />
     )
   

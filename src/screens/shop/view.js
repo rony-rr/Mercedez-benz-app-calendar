@@ -27,7 +27,7 @@ const ShopScreen = ({ data }) => {
 
   const closeModal = () => {
     setOpenM(false);
-    console.log("s");
+ 
   };
 
   return (

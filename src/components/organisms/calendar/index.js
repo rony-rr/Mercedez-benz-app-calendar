@@ -36,14 +36,7 @@ const index = ({days,onSubmit}) => {
 
   LocaleConfig.defaultLocale = 'es';
  
-  console.log({
-    [selected]: {
-      selected: true,
-      disableTouchEvent: true,
-      selectedColor: '#6BE142',
-      selectedTextColor: 'white'
-    },...days
-  })
+
   return (
     <View style={{alignItems:'center'}}>
       <Texto
