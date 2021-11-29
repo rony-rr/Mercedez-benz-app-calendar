@@ -28,12 +28,7 @@ const view = ({user,onSubmit,horarios,confirmar,vhorario,arrayHorarios}) => {
     })
   }
   return (
-    
-      <LinearGradient
-        colors={['rgba(74,89,95,0.5)', 'black']}
-        style={{ width: GlobalVars.windowWidth, height:GlobalVars.windowHeight }}
-      >
-        <ScrollView style={styles.container} contentContainerStyle={{alignItems:'center'}}>
+  <ScrollView style={styles.container} contentContainerStyle={{alignItems:'center'}}>
         <Header label='Agendar Cita'/>
         <Calendar
           onSubmit={change}
@@ -69,9 +64,7 @@ const view = ({user,onSubmit,horarios,confirmar,vhorario,arrayHorarios}) => {
         {vhorario &&  <Buttom onSubmit={() =>confirmar(data)} label="Agendar Cita" />}
        
         </ScrollView>
-      </LinearGradient>
-      
- 
+
   )
 }
 

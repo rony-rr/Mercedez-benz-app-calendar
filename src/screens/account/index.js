@@ -13,7 +13,7 @@ const index = ({navigation}) => {
   
   const [imageProfile, setImageProfile] = useState(null);
   const [dataUser, setDataUser] = useState([ ]);
-  const [dataCita, setDataCita] = useState();
+  const [dataCita, setDataCita] = useState({date:""});
   useEffect(() => {
     getToken("userToken","userInfo");
   }, []);

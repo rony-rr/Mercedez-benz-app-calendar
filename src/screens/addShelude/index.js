@@ -19,7 +19,7 @@ const index = ({onSubmit,navigation}) => {
   const urlCita ='https://experienciamercedes.com/mbconnect/admin/api/v1/appointments';
   const urlVerificarHorario ='https://experienciamercedes.com/mbconnect/admin/api/v1/available_schedule/';
   const [horarios, setHorarios] = useState([])
-  let days;
+  
 
   useEffect(() => {
     getToken("userToken","userInfo");
@@ -41,13 +41,13 @@ const index = ({onSubmit,navigation}) => {
       console.log(error);
     }
   };
-
+  var days
   const getDaysOff = async (token) => {
     try {
       const response = await fetchHook.fetchGet(urlDays,token);
       if(response.status == true){
-        let data = await useDate.formaterDaysOff(response.dates)
-        days = data;
+        days = await useDate.formaterDaysOff(response.dates)
+        console.log(days)
        
       }else{
         console.log('Error obtenido days off')

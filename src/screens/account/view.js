@@ -11,6 +11,7 @@ import BtnOption from "../../components/organisms/btnOption";
 import Input from "../../components/atoms/input";
 
 const index = ({ imgProfile, dataUser, onSubmit ,cita}) => {
+ console.log(dataUser)
   return (
   <View style={styles.container}>
    
@@ -25,8 +26,10 @@ const index = ({ imgProfile, dataUser, onSubmit ,cita}) => {
        </View>
 
       <View style={{width:GlobalVars.windowWidth,alignItems:'center'}}>
-      <Text style={{color:'white',fontSize:18,marginVertical:10}}>Mi Mercedes</Text>
-      <Input placeholder="Cita" editable={false} />
+      <Text style={{color:'white',fontSize:18,marginVertical:10,fontFamily:'Daimler'}}>Mi Mercedes</Text>
+      <Input placeholder={'Cita Pendiente '+cita.date} editable={false} />
+      <Input placeholder={dataUser.license_plate == null ? 'Sin datos...' : dataUser.license_plate} editable={false} />
+      <Input placeholder={dataUser.year == null ? 'Sin datos...' : dataUser.year} editable={false} />
       </View>
     
        

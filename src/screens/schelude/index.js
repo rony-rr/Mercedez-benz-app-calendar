@@ -26,7 +26,7 @@ const index = () => {
         >
           <Icon iconName="tool" color="white" size={40} />
           <View style={{ justifyContent: "center", marginHorizontal: 15 }}>
-            <Text style={{ fontSize: 15, color: "white" }}>Mantenimiento</Text>
+            <Text style={{ fontSize: 15, color: "white",fontFamily:'Daimler' }}>Mantenimiento</Text>
           </View>
         </View>
         <View style={{ width: "80%" }}>
@@ -75,9 +75,10 @@ const styles = StyleSheet.create({
   },
   info: {
     color: "white",
-    fontSize: 13,
+    fontSize: 15,
     marginTop: 20,
     textAlign: "left",
+    fontFamily:'Daimler'
   },
   btnCreate: {
     paddingHorizontal: 40,

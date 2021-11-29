@@ -1,30 +1,45 @@
-import React,{useState}from 'react'
+import React,{useState,useEffect}from 'react'
 import { View, Text } from 'react-native'
 import { Calendar, LocaleConfig } from 'react-native-calendars';
 import Texto from '../../atoms/text'
 import styles from './styles';
 import useDate from '../../../utils/useDate';
 
-const data =
-   {
-    fechaSeleccionada : {selected: true, marked: true},
-    '2012-05-17': {marked: true},
-    '2012-05-18': {disabled: true}
-  }
 
 
 const index = ({days,onSubmit}) => {
-  console.log(days)
-  
+  console.log("dias")
+ console.log(days)
   const INITIAL_DATE = useDate.fechaActual;
   const [selected, setSelected] = useState(INITIAL_DATE);
   const [mesSelected, setMesSelected] = useState("Seleccionar una fecha")
   const onDayPress = day => {
     onSubmit(day.dateString)
-    setSelected(day.dateString);
     setMesSelected(useDate.formatearMes(day.month.toString()))
+    setData(
+      {...days,[day.dateString]: {
+      selected: true,
+      disableTouchEvent: true,
+      selectedColor: '#6BE142',
+      selectedTextColor: 'white'
+      }}
+    )
   };
 
+  const [data, setData] = useState(
+    {...days,[INITIAL_DATE]: {
+    selected: true,
+    disableTouchEvent: true,
+    selectedColor: '#6BE142',
+    selectedTextColor: 'white'
+  }})
+
+
+  useEffect(() => {
+ 
+  }, [data,selected])
+
+ 
 
   LocaleConfig.locales['es'] = {
     monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
@@ -47,16 +62,10 @@ const index = ({days,onSubmit}) => {
           enableSwipeMonths
           style={styles.calendar}
           onDayPress={onDayPress}
+          current={INITIAL_DATE}
           minDate={useDate.fechaActual}
-          markedDates={{
-            ...days,
-            [selected]: {
-              selected: true,
-              disableTouchEvent: true,
-              selectedColor: '#6BE142',
-              selectedTextColor: 'white'
-            }
-          }}
+          selected={selected}
+          markedDates={data}
         />
     </View>
   )
