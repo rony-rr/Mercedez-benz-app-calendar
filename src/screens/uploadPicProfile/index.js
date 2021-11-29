@@ -44,7 +44,6 @@ const index = ({ navigation }) => {
           },
         }
       );
-      console.log(formData);
       const responseAgain = await response.json();
 
       alert("Datos actualizados correctamente");
