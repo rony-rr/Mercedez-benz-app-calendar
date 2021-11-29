@@ -11,6 +11,7 @@ import Alert from "../../utils/useAlert";
 
 /** Componentes */
 import StatusBar from "../../components/atoms/statusBar";
+import Textos from "../../components/atoms/text";
 import Input from "../../components/atoms/input";
 import Image from "../../components/atoms/image";
 import Buttom from "../../components/molecules/button";
@@ -41,19 +42,24 @@ const LoginScreen = ({ onSubmit, onRegister, onHelp, openModal }) => {
     <SafeAreaView style={styles.view}>
       <StatusBar
         color={GlobalVars.black}
-        styleBar={Platform.OS === "android" ? "light-content" :"light-content"}
+        styleBar={Platform.OS === "android" ? "light-content" : "light-content"}
         statusTransition="slide"
       />
       <Modal openModal={openModal} />
       <Image
         img={require("../../../assets/logo.png")}
-        width={GlobalVars.windowWidth / 8}
-        height={GlobalVars.windowHeight / 8}
+        width={GlobalVars.windowWidth / 6}
+        height={GlobalVars.windowHeight / 6}
         mode="center"
       />
+      <Textos text="Iniciar Sesión" size={28} color={GlobalVars.white} />
       <Input placeholder="Ingresar correo" changeText={setEmail} />
-      <Input placeholder="Ingresar contraseña" changeText={setPassword} secure={true} />
-      <Buttom onSubmit={() => validateData()} label="Acceder" />
+      <Input
+        placeholder="Ingresar contraseña"
+        changeText={setPassword}
+        secure={true}
+      />
+      <Buttom onSubmit={() => validateData()} label="Iniciar sesión" />
       <View style={styles.footer}>
         <LabelBtn onPress={onRegister} label="Registrarme" />
         <LabelBtn label="Necesitas ayuda?" onPress={onHelp} />

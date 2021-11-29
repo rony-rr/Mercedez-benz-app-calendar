@@ -14,14 +14,21 @@ import Alert from "../../utils/useAlert";
 import StatusBar from "../../components/atoms/statusBar";
 import Input from "../../components/atoms/input";
 import Image from "../../components/atoms/image";
-import Textos from "../../components/atoms//text";
+import Textos from "../../components/atoms/text";
 import Buttom from "../../components/molecules/button";
 import Modal from "../../components/templates/modalLoading";
 import Errors from "../../components/templates/modalErrors";
 /** Estilos */
 import styles from "./styles";
 
-const RegisterScreen = ({ onSubmitError,navigation, onSubmit, openModal, errorsRegister,errorsVisible }) => {
+const RegisterScreen = ({
+  onSubmitError,
+  navigation,
+  onSubmit,
+  openModal,
+  errorsRegister,
+  errorsVisible,
+}) => {
   // const [name, setName] = useState("");
   // const [lastName, setLastName] = useState("");
   // const [email, setEmail] = useState("");
@@ -36,7 +43,6 @@ const RegisterScreen = ({ onSubmitError,navigation, onSubmit, openModal, errorsR
   const [password, setPassword] = useState("123456789");
   const [confirmPassword, setConfirmPassword] = useState("123456789");
 
- 
   const data = {
     name: name,
     last_name: lastName,
@@ -68,10 +74,10 @@ const RegisterScreen = ({ onSubmitError,navigation, onSubmit, openModal, errorsR
     <SafeAreaView style={styles.root}>
       <StatusBar
         color={GlobalVars.black}
-        styleBar={Platform.OS === "android" ? "light-content" :"light-content"}
+        styleBar={Platform.OS === "android" ? "light-content" : "light-content"}
         statusTransition="slide"
       />
-      <Errors 
+      <Errors
         visible={errorsVisible}
         errors={errorsRegister}
         onSubmit={onSubmitError}
@@ -79,8 +85,8 @@ const RegisterScreen = ({ onSubmitError,navigation, onSubmit, openModal, errorsR
       <Modal openModal={openModal} />
       <Image
         img={require("../../../assets/logo.png")}
-        width={GlobalVars.windowWidth / 8}
-        height={GlobalVars.windowHeight / 8}
+        width={GlobalVars.windowWidth / 6}
+        height={GlobalVars.windowHeight / 6}
         mode="center"
       />
       <View style={styles.viewScrolling}>
@@ -90,8 +96,8 @@ const RegisterScreen = ({ onSubmitError,navigation, onSubmit, openModal, errorsR
         >
           <Input placeholder="Nombres" changeText={setName} />
           <Input placeholder="Apellidos" changeText={setLastName} />
-          <Input placeholder="Email" changeText={setEmail} />
-          <Input placeholder="Telefono" changeText={setTel} />
+          <Input placeholder="Correo electrónico" changeText={setEmail} />
+          <Input placeholder="Teléfono" changeText={setTel} />
           <Input placeholder="Placa" changeText={setTel} />
           <Input placeholder="Modelo" changeText={setTel} />
           <Input placeholder="Año" changeText={setTel} />
@@ -102,13 +108,13 @@ const RegisterScreen = ({ onSubmitError,navigation, onSubmit, openModal, errorsR
           />
         </ScrollView>
       </View>
-      <Buttom onSubmit={() => validateData()} label="Confirmar" />
+      <Buttom onSubmit={() => validateData()} label="Siguiente" />
       <TouchableOpacity onPress={() => navigation.navigate("login")}>
         <Textos
-          text="Ya tiene una cuenta, Ingrese acá"
+          text="Ya tiene una cuenta, Iniciar sesión"
           size={15}
           color={GlobalVars.white}
-        ></Textos>
+        />
       </TouchableOpacity>
     </SafeAreaView>
   );

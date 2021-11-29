@@ -3,9 +3,10 @@ const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 const GlobalVars = {
   urlApi: "https://experienciamercedes.com/mbconnect/admin/api/v1/",
+  fontFamily: "Daimler",
   fondoPrincipal: "#FFF",
   white: "#FFF",
-  whiteLite:"#E7E7E7",
+  whiteLite: "#E7E7E7",
   black: "#000",
   googleColor: "#DC1327",
   facebookColor: "#003B8B",
@@ -19,8 +20,11 @@ const GlobalVars = {
   azulOscuro: "#3F3D56",
   colorTextRed: "rgb(219,103,103)",
   colorTextYellow: "#FFE476",
+  greenMark: "#6BE142",
+  grayPlaceholder: "#E1DEDD",
+  redMark: "#F14E44",
   windowWidth: windowWidth,
-  windowHeight: windowHeight
+  windowHeight: windowHeight,
 };
 
 export default GlobalVars;

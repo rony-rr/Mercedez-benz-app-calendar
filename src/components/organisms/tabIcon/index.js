@@ -13,11 +13,11 @@ const tabIcon = ({ focused, route, size, color }) => {
     case "stackShop":
       iconName = "tago";
       break;
-    case "stackAccount":
+    case "myAccount":
       iconName = "user";
       break;
     default:
-      iconName = "bug";
+      iconName = "exclamationcircleo";
       break;
   }
   return (

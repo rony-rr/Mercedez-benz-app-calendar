@@ -8,10 +8,10 @@ const index = ({ img, data }) => {
     <View style={styles.view}>
       <Image
         img={{ uri: img }}
-        width={GlobalVars.windowWidth / 3}
-        height={GlobalVars.windowWidth / 3}
-        mrTop={10}
-        radius={70}
+        width={GlobalVars.windowWidth / 2.75}
+        height={GlobalVars.windowWidth / 2.75}
+        mrTop={30}
+        radius={75}
       />
       <Text style={styles.name}>
         {data.name} {data.last_name}

@@ -11,7 +11,7 @@ const Textos = (props) => {
   const { text, size, color } = props;
   const propsStyles = {
     fontSize: size,
-    color: color || GlobalVars.white
+    color: color || GlobalVars.white,
   };
   return <Text style={[styles.label, propsStyles]}>{text}</Text>;
 };

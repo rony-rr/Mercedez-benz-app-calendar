@@ -22,7 +22,7 @@ const Header = ({ label }) => {
         />
       </View>
       <View style={styles.headerContentLabel}>
-        <Text text={label} />
+        <Text text={label} size={30} />
       </View>
     </View>
   );

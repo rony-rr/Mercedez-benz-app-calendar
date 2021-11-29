@@ -1,85 +1,94 @@
+import GlobalVars from "../../global/globalVars";
 
 const fecha = new Date();
- 
+
 const formatoFecha = (fecha, formato) => {
   const map = {
-      dd: fecha.getDate(),
-      mm: fecha.getMonth() + 1,
-      yy: fecha.getFullYear().toString(),
-      yyyy: fecha.getFullYear()
-  }
-  return formato.replace(/dd|mm|yy|yyy/gi, matched => map[matched])
-}
+    dd: fecha.getDate(),
+    mm: fecha.getMonth() + 1,
+    yy: fecha.getFullYear().toString(),
+    yyyy: fecha.getFullYear(),
+  };
+  return formato.replace(/dd|mm|yy|yyy/gi, (matched) => map[matched]);
+};
 
-const fechaActual = formatoFecha(fecha,'yy-mm-dd');
-
+const fechaActual = formatoFecha(fecha, "yy-mm-dd");
 
 const formatearMes = (mes) => {
   let res;
   switch (mes) {
     case "01":
-      res='Enero'
-    break;
+      res = "Enero";
+      break;
     case "02":
-      res='Febrero'
-    break;
+      res = "Febrero";
+      break;
     case "03":
-      res='Marzo'
-    break;
+      res = "Marzo";
+      break;
     case "04":
-      res='Abril'
-    break;
+      res = "Abril";
+      break;
     case "05":
-      res='Mayo'
-    break;
+      res = "Mayo";
+      break;
     case "06":
-      res='Junio'
-    break;
+      res = "Junio";
+      break;
     case "07":
-      res='Julio'
-    break;
+      res = "Julio";
+      break;
     case "08":
-      res='Agosto'
-    break;
+      res = "Agosto";
+      break;
     case "09":
-      res='Septiembre'
-    break;
+      res = "Septiembre";
+      break;
     case "10":
-      res='Octubre'
-    break;
+      res = "Octubre";
+      break;
     case "11":
-      res='Noviembre'
-    break;
-    case '12':
-      res='Diciembre'
-    break;
+      res = "Noviembre";
+      break;
+    case "12":
+      res = "Diciembre";
+      break;
     default:
-      res='Seleccionar una fecha'
-    break;
+      res = "Seleccionar una fecha";
+      break;
   }
 
   return res;
-}
+};
 
-
-const formaterDaysOff =(data)=>{
-  const res = data.map((item,index)=>{
+const formaterDaysOff = (data) => {
+  const res = data.map((item, index) => {
     let fecha = `${item.year}-${item.month}-${item.day}`;
     return {
       [fecha]: {
         selected: true,
+        disabled: true,
         disableTouchEvent: true,
-        selectedColor: '#45B5EA',
-        selectedTextColor: 'white'
-      }
-    }
-  })
+        customStyles: {
+          container: {
+            backgroundColor: GlobalVars.redMark,
+          },
+          text: {
+            color: GlobalVars.white,
+            fontWeight: "bold",
+          },
+        },
+      },
+    };
+  });
   return res;
-}
+};
+
 const date = {
   fecha,
   formatearMes,
   fechaActual,
-  formaterDaysOff
-}
+  formaterDaysOff,
+};
+
 export default date;

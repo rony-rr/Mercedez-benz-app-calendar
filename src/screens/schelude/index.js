@@ -1,10 +1,18 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
-import Header from "../../components/molecules/header/index";
-import { LinearGradient } from "expo-linear-gradient";
-import Icon from "../../components/atoms/icon/index";
+
 import { useNavigation } from "@react-navigation/native";
+
+import { LinearGradient } from "expo-linear-gradient";
+
 import GlobalVars from "../../global/globalVars";
+
+import Header from "../../components/molecules/header";
+import Icon from "../../components/atoms/icon";
+
+import Styles from "./styles";
+
+const styles = Styles;
 
 const index = () => {
   const navigation = useNavigation();
@@ -26,7 +34,15 @@ const index = () => {
         >
           <Icon iconName="tool" color="white" size={40} />
           <View style={{ justifyContent: "center", marginHorizontal: 15 }}>
-            <Text style={{ fontSize: 15, color: "white",fontFamily:'Daimler' }}>Mantenimiento</Text>
+            <Text
+              style={{
+                fontSize: 15,
+                color: "white",
+                fontFamily: GlobalVars.fontFamily,
+              }}
+            >
+              Mantenimiento
+            </Text>
           </View>
         </View>
         <View style={{ width: "80%" }}>
@@ -58,33 +74,5 @@ const index = () => {
     </View>
   );
 };
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "black",
-  },
-  background: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    top: 0,
-    height: GlobalVars.windowHeight,
-    alignItems: "center",
-  },
-  info: {
-    color: "white",
-    fontSize: 15,
-    marginTop: 20,
-    textAlign: "left",
-    fontFamily:'Daimler'
-  },
-  btnCreate: {
-    paddingHorizontal: 40,
-    paddingVertical: 10,
-    backgroundColor: "#45B5EA",
-    marginTop: 20,
-  },
-});
+
 export default index;

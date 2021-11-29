@@ -15,14 +15,14 @@ const index = ({ navigation }) => {
       if (response !== null) {
         navigation.navigate("TabNavigation");
       } else {
-        navigation.navigate("login");
+        navigation.navigate("account");
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-  if (verificandoAuth == null) return <Splash />;
+  if (!verificandoAuth) return <Splash />;
 };
 
 export default index;
