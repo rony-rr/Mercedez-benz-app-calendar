@@ -35,9 +35,7 @@ const index = ({days,onSubmit}) => {
   }})
 
 
-  useEffect(() => {
  
-  }, [data,selected])
 
  
 
