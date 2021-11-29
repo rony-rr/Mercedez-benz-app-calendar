@@ -1,21 +1,23 @@
 import React from "react";
 import { View, Text } from "react-native";
-import Header from "../../components/molecules/header/index";
 import { LinearGradient } from "expo-linear-gradient";
-import Icon from "../../components/atoms/icon/index";
+
 import GlobalVars from "../../global/globalVars";
 
+import Icon from "../../components/atoms/icon";
+import Input from "../../components/atoms/input";
 import StatusBar from "../../components/atoms/statusBar";
+import Header from "../../components/molecules/header";
 import ImgProfile from "../../components/molecules/imgProfile";
 import BtnOption from "../../components/organisms/btnOption";
-import Input from "../../components/atoms/input";
 
 import Styles from "./styles";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const styles = Styles;
 
-const index = ({ imgProfile, dataUser, onSubmit, cita }) => {
-  console.log(dataUser);
+const index = ({ imgProfile, dataUser, onSubmit, cita, navigation }) => {
+  // console.log(dataUser);
   return (
     <View style={styles.container}>
       <LinearGradient
@@ -25,7 +27,9 @@ const index = ({ imgProfile, dataUser, onSubmit, cita }) => {
       >
         <Header label="Perfil" />
         <View style={{ alignItems: "center" }}>
-          <ImgProfile img={imgProfile} data={dataUser} />
+          <TouchableOpacity onPress={() => navigation.navigate("uploadPic")}>
+            <ImgProfile img={imgProfile} data={dataUser} />
+          </TouchableOpacity>
         </View>
 
         <View style={{ width: GlobalVars.windowWidth, alignItems: "center" }}>

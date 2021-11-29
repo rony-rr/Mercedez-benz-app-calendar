@@ -56,10 +56,22 @@ const view = ({
           justifyContent: "center",
         }}
       >
-        <View style={{ marginHorizontal: 5, justifyContent: "center" }}>
+        <View
+          style={{
+            marginHorizontal: 5,
+            justifyContent: "center",
+            display: "none",
+          }}
+        >
           <Icon iconName="exclamationcircle" color="#55C1FF" size={20} />
         </View>
-        <View style={{ marginHorizontal: 5, justifyContent: "center" }}>
+        <View
+          style={{
+            marginHorizontal: 5,
+            justifyContent: "center",
+            display: "none",
+          }}
+        >
           <Texto text="Dia ocupado" size={18} />
         </View>
       </View>

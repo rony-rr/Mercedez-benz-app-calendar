@@ -125,6 +125,7 @@ const index = ({ days, onSubmit }) => {
         minDate={useDate.fechaActual}
         markingType={"custom"}
         markedDates={data}
+        disabledDaysIndexes={[6]}
       />
     </View>
   );

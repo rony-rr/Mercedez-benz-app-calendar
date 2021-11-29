@@ -64,7 +64,7 @@ const index = ({navigation}) => {
       imgProfile={imageProfile}
       dataUser={dataUser}
       cita={dataCita}
-      
+      navigation={navigation}
     />
   )
 }
