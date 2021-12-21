@@ -14,10 +14,21 @@ import styles from "./styles";
 const index = ({ days, onSubmit }) => {
   const INITIAL_DATE = useDate.fechaActual;
   const [selected, setSelected] = useState(INITIAL_DATE);
+  const [maxDate, setMaxDate] = useState(null);
   const [mesSelected, setMesSelected] = useState("Seleccionar una fecha");
   const [data, setData] = useState();
 
   useEffect(() => {
+    let d = new Date();
+    let afterDays = 1;
+    d.setDate(d.getDate() + afterDays);
+    setSelected(useDate.formatoFecha(d, "yy-mm-dd"));
+    d = new Date();
+    afterDays = 90;
+    d.setDate(d.getDate() + afterDays);
+    let maxDestinate = useDate.formatoFecha(d, "yy-mm-dd");
+    setMaxDate(maxDestinate);
+    let current = new Date(INITIAL_DATE);
     let resultDaysOff = {
       [INITIAL_DATE]: {
         selected: true,
@@ -33,6 +44,27 @@ const index = ({ days, onSubmit }) => {
 
   useFocusEffect(
     React.useCallback(() => {
+      let d = new Date();
+      let afterDays = 1;
+      d.setDate(d.getDate() + afterDays);
+      setSelected(useDate.formatoFecha(d, "yy-mm-dd"));
+      d = new Date();
+      afterDays = 90;
+      d.setDate(d.getDate() + afterDays);
+      let maxDestinate = useDate.formatoFecha(d, "yy-mm-dd");
+      setMaxDate(maxDestinate);
+      var startDate = new Date(INITIAL_DATE);
+      var endDate = new Date(d);
+      //   let objectSundays = {};
+      //   while (startDate <= endDate) {
+      //     if (startDate.getDay() === 0) {
+      //         objectSunday = {
+
+      //         };
+      //     } else {
+      //         startDate.setDate(startDate.getDate() + 1);
+      //     }
+      // }
       let resultDaysOff = {
         [INITIAL_DATE]: {
           selected: true,
@@ -122,7 +154,8 @@ const index = ({ days, onSubmit }) => {
         style={styles.calendar}
         onDayPress={onDayPress}
         current={INITIAL_DATE}
-        minDate={useDate.fechaActual}
+        minDate={selected}
+        maxDate={maxDate}
         markingType={"custom"}
         markedDates={data}
         disabledDaysIndexes={[6]}

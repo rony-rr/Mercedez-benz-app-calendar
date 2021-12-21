@@ -1,11 +1,30 @@
 import React, { useState, useEffect } from "react";
-import UploadPicProfile from "./view";
+
 import { Alert } from "react-native";
 import * as ImagePicker from "expo-image-picker";
+
+import GlobalVars from "../../global/globalVars";
+
 import storage from "../../utils/useLocalStorage";
 
+import UploadPicProfile from "./view";
+
 const index = ({ navigation }) => {
+  const [tokeUser, setTokenUser] = useState("");
+  const [userInfo, setUserInfo] = useState(null);
   const [pickedImagePath, setPickedImagePath] = useState(null);
+
+  useEffect(() => {
+    recoverToken();
+  }, []);
+
+  const recoverToken = async () => {
+    const getToken = await storage.getItem("userToken");
+    setTokenUser(getToken);
+    const user = await storage.getItem("userInfo");
+    setUserInfo(user);
+  };
+
   const getMimeType = (ext) => {
     // mime type mapping for few of the sample file types
     switch (ext) {
@@ -19,38 +38,34 @@ const index = ({ navigation }) => {
         return "image/png";
     }
   };
-  const uploadPic = async (data) => {
+  const uploadPic = async () => {
     const fileUri = pickedImagePath;
     let filename = fileUri.split("/").pop();
     const extArr = /\.(\w+)$/.exec(filename);
     const type = getMimeType(extArr[1]);
     let formData = new FormData();
-    const getToken = await storage.getItem("userToken");
-    const user = await storage.getItem("userInfo");
-    const dataUser = JSON.parse(user);
-
-    const token = JSON.parse(getToken);
+    const dataUser = userInfo;
+    const token = tokeUser;
     formData.append("profile_picture", { uri: fileUri, name: filename, type });
     formData.append("_method", "PUT");
-    try {
-      const response = await fetch(
-        `https://experienciamercedes.com/mbconnect/admin/api/v1/picture/${dataUser.id}`,
-        {
-          method: "POST",
-          body: formData,
-          headers: {
-            "content-type": "multipart/form-data",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      const responseAgain = await response.json();
 
-      alert("Datos actualizados correctamente");
-      console.log(responseAgain);
-      navigation.navigate("TabNavigation");
-    } catch (error) {
-      console.log(error);
+    try {
+      fetch(`${GlobalVars.urlApi}picture/${dataUser.id}`, {
+        method: "POST",
+        body: formData,
+        headers: {
+          "content-type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((responseData) => {
+          Alert.alert("Datos actualizados correctamente");
+          navigation.navigate("TabNavigation");
+        })
+        .catch((err) => console.log(err));
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -123,7 +138,13 @@ const index = ({ navigation }) => {
     }
   };
 
-  return <UploadPicProfile onSubmit={upload} uploadPic={uploadPic} />;
+  return (
+    <UploadPicProfile
+      pickedImagePath={pickedImagePath}
+      onSubmit={upload}
+      uploadPic={uploadPic}
+    />
+  );
 };
 
 export default index;

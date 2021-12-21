@@ -4,8 +4,11 @@ const fecha = new Date();
 
 const formatoFecha = (fecha, formato) => {
   const map = {
-    dd: fecha.getDate(),
-    mm: fecha.getMonth() + 1,
+    dd: fecha.getDate() < 10 ? "0" + fecha.getDate() : fecha.getDate(),
+    mm:
+      fecha.getMonth() < 9
+        ? "0" + (fecha.getMonth() + 1)
+        : fecha.getMonth() + 1,
     yy: fecha.getFullYear().toString(),
     yyyy: fecha.getFullYear(),
   };
@@ -63,7 +66,9 @@ const formatearMes = (mes) => {
 
 const formaterDaysOff = (data) => {
   const res = data.map((item, index) => {
-    let fecha = `${item.year}-${item.month}-${item.day}`;
+    let day = item.day < 10 ? ("0" + item.day) : item.day;
+    let month = item.month < 10 ? ("0" + item.month) : item.month;
+    let fecha = `${item.year}-${month}-${day}`;
     return {
       [fecha]: {
         selected: true,
@@ -86,6 +91,7 @@ const formaterDaysOff = (data) => {
 
 const date = {
   fecha,
+  formatoFecha,
   formatearMes,
   fechaActual,
   formaterDaysOff,

@@ -47,7 +47,7 @@ const LoginScreen = ({ onSubmit, onRegister, onHelp, openModal }) => {
       />
       <Modal openModal={openModal} />
       <Image
-        img={require("../../../assets/logo.png")}
+        img={require("../../../assets/logomb.png")}
         width={GlobalVars.windowWidth / 6}
         height={GlobalVars.windowHeight / 6}
         mode="center"
@@ -62,7 +62,7 @@ const LoginScreen = ({ onSubmit, onRegister, onHelp, openModal }) => {
       <Buttom onSubmit={() => validateData()} label="Iniciar sesión" />
       <View style={styles.footer}>
         <LabelBtn onPress={onRegister} label="Registrarme" />
-        <LabelBtn label="Necesitas ayuda?" onPress={onHelp} />
+        {/* <LabelBtn label="Necesitas ayuda?" onPress={onHelp} /> */}
       </View>
     </SafeAreaView>
   );

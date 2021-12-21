@@ -4,14 +4,17 @@ import Image from "../../atoms/image";
 import styles from "./styles";
 import GlobalVars from "../../../global/globalVars";
 const index = ({ img, data }) => {
+  const imgSrc = img
+    ? { uri: img }
+    : require("../../../../assets/avatar-default.png");
   return (
     <View style={styles.view}>
       <Image
-        img={{ uri: img }}
-        width={GlobalVars.windowWidth / 2.75}
-        height={GlobalVars.windowWidth / 2.75}
+        img={imgSrc}
+        width={130}
+        height={130}
         mrTop={30}
-        radius={75}
+        radius={img ? 75 : 0}
       />
       <Text style={styles.name}>
         {data.name} {data.last_name}

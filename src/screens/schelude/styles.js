@@ -20,10 +20,11 @@ const Styles = StyleSheet.create({
 
   info: {
     color: "white",
-    fontSize: 15,
+    fontSize: 17,
     marginTop: 20,
     textAlign: "justify",
     fontFamily: "Daimler",
+    lineHeight: 22
   },
 
   btnCreate: {
@@ -31,6 +32,7 @@ const Styles = StyleSheet.create({
     paddingVertical: 10,
     backgroundColor: "#45B5EA",
     marginTop: 20,
+    fontFamily: GlobalVars.fontFamily
   },
 });
 

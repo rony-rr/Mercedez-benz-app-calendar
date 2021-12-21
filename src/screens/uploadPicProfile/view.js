@@ -1,38 +1,62 @@
-import React,{useState} from 'react'
-import { View ,StatusBar,TouchableOpacity,TextInput} from 'react-native'
-import Header from "../../components/molecules/header/index"
-import styles from "./styles"
-import { Octicons } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons';
-import Text from "../../components/atoms/text";
-import Buttom from "../../components/molecules/button"
-import { useNavigation } from '@react-navigation/native';
+import React from "react";
+import { View, TouchableOpacity, Image } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
-const view = ({onSubmit,uploadPic}) => {
+import { Octicons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
+import Text from "../../components/atoms/text";
+import Buttom from "../../components/molecules/button";
+import ImgProfile from "../../components/molecules/imgProfile";
+
+import styles from "./styles";
+import GlobalVars from "../../global/globalVars";
+
+const view = ({ onSubmit, uploadPic, pickedImagePath = null }) => {
   const navigation = useNavigation();
 
-  return ( 
+  return (
     <View style={styles.view}>
-     <TouchableOpacity style={styles.btnPhoto}
-      onPress={onSubmit}
-     >
-        <AntDesign name="camerao" size={100} color="white" />
-        <View
-         style={styles.btnAdd}
+      {!pickedImagePath && (
+        <TouchableOpacity style={styles.btnPhoto} onPress={onSubmit}>
+          <AntDesign name="camerao" size={100} color="white" />
+          <View style={styles.btnAdd}>
+            <Octicons name="plus-small" size={45} color="white" />
+          </View>
+        </TouchableOpacity>
+      )}
+
+      {pickedImagePath && (
+        <TouchableOpacity
+          style={[styles.btnPhoto, { backgroundColor: "transparent" }]}
+          onPress={onSubmit}
         >
-        <Octicons name="plus-small" size={45} color="white" />
-        </View>
+          <Image
+            style={{
+              width: GlobalVars.windowWidth / 2.75,
+              height: GlobalVars.windowWidth / 2.75,
+              borderRadius: 75,
+            }}
+            source={{
+              uri: pickedImagePath,
+            }}
+          />
+        </TouchableOpacity>
+      )}
+
+      <TouchableOpacity onPress={onSubmit}>
+        <Text text="Agregar foto de perfil" onPress={onSubmit} />
       </TouchableOpacity>
 
-      <Text
-        text="Add Profile Picture"
+      {pickedImagePath && (
+        <Buttom label="CARGAR" onSubmit={() => uploadPic()} />
+      )}
+
+      <Buttom
+        label="OMITIR"
+        onSubmit={() => navigation.navigate("TabNavigation")}
       />
-
-       <Buttom label="UPLOAD" onSubmit={()=>uploadPic()}/>    
-
-      <Buttom label="SKIP" onSubmit={()=>navigation.navigate("TabNavigation")}/>
     </View>
-  )
-}
+  );
+};
 
-export default view
+export default view;

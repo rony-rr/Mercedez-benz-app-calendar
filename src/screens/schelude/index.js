@@ -36,7 +36,7 @@ const index = () => {
           <View style={{ justifyContent: "center", marginHorizontal: 15 }}>
             <Text
               style={{
-                fontSize: 15,
+                fontSize: 25,
                 color: "white",
                 fontFamily: GlobalVars.fontFamily,
               }}
@@ -68,7 +68,9 @@ const index = () => {
           style={styles.btnCreate}
           onPress={() => navigation.navigate("addShelude")}
         >
-          <Text style={{ color: "white" }}>Crear cita</Text>
+          <Text style={{ color: "white", fontSize: 20 }}>
+            Agendar
+          </Text>
         </TouchableOpacity>
       </LinearGradient>
     </View>

@@ -34,6 +34,45 @@ const Styles = StyleSheet.create({
     borderBottomWidth: 0.5,
     borderColor: "white",
   },
+
+  layoutCitas: {
+    width: "100%",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+    paddingHorizontal: 40,
+  },
+
+  styleLabel: {
+    color: GlobalVars.white,
+    fontSize: 15,
+    marginTop: 20,
+    marginBottom: 0,
+    textAlign: "left",
+  },
+
+  reserved: {
+    borderRadius: 7,
+    paddingHorizontal: 15,
+    paddingVertical: 5,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  labelReserved: {
+    color: GlobalVars.white,
+    fontFamily: GlobalVars.fontFamily,
+    fontWeight: "700",
+  },
+
+  floatLogout: {
+    width: 50,
+    height: 50,
+    borderRadius: 75,
+    backgroundColor: GlobalVars.white,
+    justifyContent: "center",
+    alignItems: "center",
+    marginVertical: 25
+  },
 });
 
 export default Styles;

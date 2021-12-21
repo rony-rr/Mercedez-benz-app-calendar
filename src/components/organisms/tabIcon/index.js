@@ -1,5 +1,8 @@
-import React from 'react'
-import Icon from "../../atoms/icon/index"
+import React from "react";
+
+import GlobalVars from "../../../global/globalVars";
+
+import Icon from "../../atoms/icon";
 
 const tabIcon = ({ focused, route, size, color }) => {
   let iconName;
@@ -21,9 +24,12 @@ const tabIcon = ({ focused, route, size, color }) => {
       break;
   }
   return (
-    <Icon iconName={iconName} size={size} color={color} />
-  )
-}
+    <Icon
+      iconName={iconName}
+      size={focused ? 24 : 16}
+      color={focused ? GlobalVars.blueMercedes : GlobalVars.white}
+    />
+  );
+};
 
-export default tabIcon
-
+export default tabIcon;

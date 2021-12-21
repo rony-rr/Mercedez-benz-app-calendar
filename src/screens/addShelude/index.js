@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+
+import { useFocusEffect } from "@react-navigation/native";
+
 // views
 import AddShelude from "./view";
 import TemplateLoading from "../../components/templates/splashLoading";
@@ -17,15 +20,19 @@ const index = ({ onSubmit, navigation }) => {
   const [verificandoHorario, setverificandoHorario] = useState(false);
   const [days, setDays] = useState([]);
   const urlDays = `${GlobalVars.urlApi}days_off`;
-  const urlCita =
-    "https://experienciamercedes.com/mbconnect/admin/api/v1/appointments";
-  const urlVerificarHorario =
-    "https://experienciamercedes.com/mbconnect/admin/api/v1/available_schedule/";
+  const urlCita = `${GlobalVars.urlApi}appointments/user`;
+  const urlVerificarHorario = `${GlobalVars.urlApi}available_schedule/`;
   const [horarios, setHorarios] = useState([]);
 
   useEffect(() => {
     getToken("userToken", "userInfo");
   }, []);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      getToken("userToken", "userInfo");
+    }, [])
+  );
 
   const getToken = async (key, key2) => {
     try {
@@ -60,12 +67,12 @@ const index = ({ onSubmit, navigation }) => {
 
   const addShelude = async (data) => {
     try {
-      const response = await fetchHook.fetchPost(urlCita, data, token);
+      const response = await fetchHook.fetchPost(`${GlobalVars.urlApi}appointments`, data, token);
       // console.log(response)
-      if (response.status == true) {
-        navigation.navigate("account");
+      if (response.status === true) {
+        navigation.navigate("myAccount");
       } else {
-        Alert("error");
+        Alert("Error guardando datos");
       }
     } catch (error) {
       console.log(error);
@@ -74,12 +81,22 @@ const index = ({ onSubmit, navigation }) => {
 
   const verificarCitas = async (data) => {
     try {
-      const response = await fetchHook.fetchGet(urlCita, token);
-      let res = response.appointments[response.appointments.length - 1];
-      if (res.status == 1) {
-        Alert("Aviso", "Ya cuentas con una cita pendiente");
+      if (data?.maintenance_description && data?.schedule_id && data?.user_id) {
+        const response = await fetchHook.fetchGet(urlCita, token);
+        let res = response.appointments;
+        let hasDate = false;
+        res.map((item, i) => {
+          if (item.status === 1) {
+            hasDate = true;
+          }
+        });
+        if (hasDate) {
+          Alert("Aviso", "Ya cuentas con una cita pendiente");
+        } else {
+          addShelude(data);
+        }
       } else {
-        addShelude(data);
+        Alert("Complete los datos");
       }
     } catch (error) {
       console.log(error);
@@ -103,7 +120,7 @@ const index = ({ onSubmit, navigation }) => {
     }
   };
 
-  if( !days ) return null;
+  if (!days) return null;
 
   return (
     <AddShelude

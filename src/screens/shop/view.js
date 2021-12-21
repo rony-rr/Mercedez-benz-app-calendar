@@ -27,14 +27,13 @@ const ShopScreen = ({ data }) => {
 
   const closeModal = () => {
     setOpenM(false);
- 
   };
 
   return (
     <View style={styles.container}>
       <StatusBar
         color={GlobalVars.black}
-        styleBar={Platform.OS === "android" ? "light-content" :"light-content"}
+        styleBar={Platform.OS === "android" ? "light-content" : "light-content"}
         statusTransition="slide"
       />
       <Modal data={producto} visible={openM} submit={closeModal} />
@@ -60,7 +59,7 @@ const ShopScreen = ({ data }) => {
           style={styles.floatButton}
           onPress={() =>
             Linking.openURL(
-              `whatsapp://send?text=Hola,%quisiera%informacion&phone=50372102380`
+              `whatsapp://send?text=Hola, quisiera más información sobre los productos en el cátalogo de la aplicación Mercedes Connect&phone=50372102380`
             )
           }
         >

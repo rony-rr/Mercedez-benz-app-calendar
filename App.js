@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import useFont from "./src/utils/useFonts/index";
+import useFont from "./src/utils/useFonts";
 import Splash from "./src/components/templates/splashLoading";
 import Navigation from "./src/navigation/navigation";
 import storage from "./src/utils/useLocalStorage";

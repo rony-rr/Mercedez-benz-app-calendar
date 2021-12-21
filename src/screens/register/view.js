@@ -36,12 +36,15 @@ const RegisterScreen = ({
   // const [password, setPassword] = useState("");
   // const [confirmPassword, setConfirmPassword] = useState("");
 
-  const [name, setName] = useState("sss");
-  const [lastName, setLastName] = useState("sss");
-  const [email, setEmail] = useState("jaesssrrr@gmail.com");
-  const [tel, setTel] = useState("12345678");
-  const [password, setPassword] = useState("123456789");
-  const [confirmPassword, setConfirmPassword] = useState("123456789");
+  const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [tel, setTel] = useState(" ");
+  const [licensePlate, setLicense] = useState(" ");
+  const [model, setModel] = useState(" ");
+  const [year, setYear] = useState(" ");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const data = {
     name: name,
@@ -50,21 +53,21 @@ const RegisterScreen = ({
     password: password,
     password_confirmation: confirmPassword,
     phone_number: tel,
-    license_plate: "",
-    model: "",
-    year: "",
+    license_plate: licensePlate,
+    model: model,
+    year: year,
     profile_picture: "",
   };
+
   const validateData = () => {
     if (
-      name.length == 0 ||
-      lastName.length == 0 ||
-      email.length == 0 ||
-      tel.length == 0 ||
-      password.length == 0 ||
-      confirmPassword.length == 0
+      name.length === 0 ||
+      lastName.length === 0 ||
+      email.length === 0 ||
+      password.length < 7 ||
+      confirmPassword.length < 7
     ) {
-      Alert("Mensaje", "Campos vacíos");
+      Alert("Mensaje", "Campos obligatorios vacíos");
     } else {
       onSubmit(data);
     }
@@ -84,7 +87,7 @@ const RegisterScreen = ({
       />
       <Modal openModal={openModal} />
       <Image
-        img={require("../../../assets/logo.png")}
+        img={require("../../../assets/logomb.png")}
         width={GlobalVars.windowWidth / 6}
         height={GlobalVars.windowHeight / 6}
         mode="center"
@@ -94,16 +97,16 @@ const RegisterScreen = ({
           style={styles.viewScroll}
           contentContainerStyle={styles.contentContainer}
         >
-          <Input placeholder="Nombres" changeText={setName} />
-          <Input placeholder="Apellidos" changeText={setLastName} />
-          <Input placeholder="Correo electrónico" changeText={setEmail} />
+          <Input placeholder="Nombres *" changeText={setName} />
+          <Input placeholder="Apellidos *" changeText={setLastName} />
+          <Input placeholder="Correo electrónico *" changeText={setEmail} />
           <Input placeholder="Teléfono" changeText={setTel} />
-          <Input placeholder="Placa" changeText={setTel} />
-          <Input placeholder="Modelo" changeText={setTel} />
-          <Input placeholder="Año" changeText={setTel} />
-          <Input placeholder="Password" changeText={setPassword} />
+          <Input placeholder="Placa" changeText={setLicense} />
+          <Input placeholder="Modelo" changeText={setModel} />
+          <Input placeholder="Año" changeText={setYear} />
+          <Input placeholder="Contraseña *" changeText={setPassword} />
           <Input
-            placeholder="Confirmar password"
+            placeholder="Confirmar contraseña *"
             changeText={setConfirmPassword}
           />
         </ScrollView>

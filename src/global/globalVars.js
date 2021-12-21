@@ -10,6 +10,7 @@ const GlobalVars = {
   black: "#000",
   googleColor: "#DC1327",
   facebookColor: "#003B8B",
+  blueMercedes: "#07ADEE",
   firstColor: "#BA0E18",
   grisColor: "#3C3C3C",
   grisOscuro: "#BABABA",

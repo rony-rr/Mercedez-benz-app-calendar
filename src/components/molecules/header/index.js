@@ -15,9 +15,9 @@ const Header = ({ label }) => {
     <View style={styles.view}>
       <View style={styles.headerContentLogo}>
         <Image
-          width={GlobalVars.windowWidth / 8}
-          height={GlobalVars.windowWidth / 8}
-          img={require("../../../../assets/logo.png")}
+          width={32}
+          height={32}
+          img={require("../../../../assets/logomb.png")}
           mode="center"
         />
       </View>

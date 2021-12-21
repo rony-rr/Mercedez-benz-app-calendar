@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "Experiencia Mercedes Benz",
+    "name": "Mercedes Connect",
     "description": "App de reverva de citas",
-    "slug": "experiencia-mercedes-benz",
-    "version": "1.0.0",
+    "slug": "mercedes-connect",
+    "version": "2.5.5",
     "orientation": "portrait",
     "primaryColor": "#cccccc",
     "icon": "./assets/icon.png",
@@ -13,29 +13,33 @@
       "backgroundColor": "#000"
     },
     "packagerOpts": {
-      "assetExts": ["ttf"]
+      "assetExts": ["ttf", "otf"]
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "bundleIdentifier": "com.mercedesbenz.sv.appreservas",
-      "buildNumber": "1.0.0",
-      "supportsTablet": true
+      "buildNumber": "2.5.5",
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Habilite el acceso a la cámara para que pueda almacenar una foto de perfil instantánea",
+        "NSPhotoLibraryAddUsageDescription": "Habilite el acceso a la librería de fotos para que pueda agregar las fotos que toma a su librería",
+        "NSPhotoLibraryUsageDescription": "Habilite el acceso a la librería de fotos para que pueda seleccionar una foto de perfil videos de su almacenamiento",
+        "UIRequiresFullScreen": true
+      }
     },
     "android": {
-      "versionCode": 1,
+      "versionCode": 20505,
       "package": "com.mercedesbenz.sv.appreservas",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#000"
       }
     },
-    "androidStatusBar" : {
-      "backgroundColor" : "#000"
+    "androidStatusBar": {
+      "backgroundColor": "#000"
     },
     "web": {
       "favicon": "./assets/favicon.png"
