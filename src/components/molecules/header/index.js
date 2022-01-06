@@ -18,7 +18,7 @@ const Header = ({ label }) => {
           width={32}
           height={32}
           img={require("../../../../assets/logomb.png")}
-          mode="center"
+          // mode="center"
         />
       </View>
       <View style={styles.headerContentLabel}>
