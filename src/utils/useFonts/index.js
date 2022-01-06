@@ -1,20 +1,18 @@
-import { useFonts } from 'expo-font';
+import { useFonts } from "expo-font";
 
-  const loadFonts = async()=> {
-    try {
-      const [loaded] = useFonts({
-        "Roboto": require('../../../assets/fonts/Roboto-Regular.ttf'),
-      });
-      return loaded
-    } catch (error) {
-      console.log(error)
-    }
+const loadFonts = async () => {
+  try {
+    const [loaded] = useFonts({
+      Daimler: require("../../../assets/fonts/font-corporate.otf"),
+    });
+    return loaded;
+  } catch (error) {
+    console.log(error);
   }
-
+};
 
 const useFont = {
-  loadFonts
+  loadFonts,
 };
-Object.freeze(useFont);
 
 export default useFont;

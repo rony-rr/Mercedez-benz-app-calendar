@@ -1,33 +1,42 @@
-import * as React from 'react';
-import { Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import * as React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home!</Text>
-    </View>
-  );
-}
+import TabNavigation from "../navigation/tabNavigation";
+import AccountStack from "./stackAccount";
+import UploadPicScreen from "../screens/uploadPicProfile";
+import VerifyScreen from "../screens/verifyAuth";
 
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
+const Stack = createNativeStackNavigator();
+const optionsScreen = { headerShown: false };
 
-const Tab = createBottomTabNavigator();
-
-export default function App() {
+function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
-      </Tab.Navigator>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="verifyAuth"
+          component={VerifyScreen}
+          options={optionsScreen}
+        />
+        <Stack.Screen
+          name="account"
+          component={AccountStack}
+          options={optionsScreen}
+        />
+        <Stack.Screen
+          name="TabNavigation"
+          component={TabNavigation}
+          options={optionsScreen}
+        />
+        <Stack.Screen
+          name="uploadPic"
+          component={UploadPicScreen}
+          options={{ headerShown: false }}
+        />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
+
+export default App;
