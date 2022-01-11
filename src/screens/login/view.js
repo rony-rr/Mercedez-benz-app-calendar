@@ -17,11 +17,18 @@ import Image from "../../components/atoms/image";
 import Buttom from "../../components/molecules/button";
 import LabelBtn from "../../components/molecules/labelTouchable";
 import Modal from "../../components/templates/modalLoading";
+import ModalResetPass from "../../components/templates/modalRestorePass";
 
 /** Estilos */
 import styles from "./styles";
 
-const LoginScreen = ({ onSubmit, onRegister, onHelp, openModal }) => {
+const LoginScreen = ({
+  onSubmit,
+  onRegister,
+  onHelp,
+  openModal,
+  restorePass,
+}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -46,6 +53,7 @@ const LoginScreen = ({ onSubmit, onRegister, onHelp, openModal }) => {
         statusTransition="slide"
       />
       <Modal openModal={openModal} />
+      <ModalResetPass openModal={restorePass} onHelp={onHelp} />
       <Image
         img={require("../../../assets/logomb.png")}
         width={GlobalVars.windowWidth / 6}
@@ -62,7 +70,7 @@ const LoginScreen = ({ onSubmit, onRegister, onHelp, openModal }) => {
       <Buttom onSubmit={() => validateData()} label="Iniciar sesión" />
       <View style={styles.footer}>
         <LabelBtn onPress={onRegister} label="Registrarme" />
-        {/* <LabelBtn label="Necesitas ayuda?" onPress={onHelp} /> */}
+        <LabelBtn label="Restaurar contraseña" onPress={onHelp} />
       </View>
     </SafeAreaView>
   );
