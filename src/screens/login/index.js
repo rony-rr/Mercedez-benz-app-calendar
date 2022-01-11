@@ -7,6 +7,7 @@ import Alert from "../../utils/useAlert";
 
 const index = ({ navigation }) => {
   const [openModal, setOpenModal] = useState(false);
+  const [restorePass, setRestorePass] = useState(false);
 
   const urlLogin = `${GlobalVars.urlApi}login`;
 
@@ -30,11 +31,17 @@ const index = ({ navigation }) => {
 
   const onRegister = () => navigation.navigate("register");
 
+  const onHelp = () => {
+    setRestorePass(!restorePass);
+  };
+
   return (
     <Login
       openModal={openModal}
+      restorePass={restorePass}
       onSubmit={login}
       onRegister={onRegister}
+      onHelp={onHelp}
       navigation={navigation}
     />
   );
