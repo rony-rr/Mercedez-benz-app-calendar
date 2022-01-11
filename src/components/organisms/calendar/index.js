@@ -149,6 +149,7 @@ const index = ({ days, onSubmit }) => {
   return (
     <View style={{ alignItems: "center" }}>
       <Texto text={mesSelected} size={25} />
+      <View style={{ width: "100%", height: 1, marginVertical: 15 }}></View>
       <Calendar
         enableSwipeMonths
         style={styles.calendar}

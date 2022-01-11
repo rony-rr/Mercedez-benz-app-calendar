@@ -34,6 +34,16 @@ const Styles = StyleSheet.create({
     marginTop: 20,
     fontFamily: GlobalVars.fontFamily
   },
+
+  viewScroll: {
+    flex: 1,
+    width: "100%",
+  },
+
+  contentContainer: {
+    alignItems: "center",
+    paddingBottom: GlobalVars.windowHeight > 750 ? 30 : 100,
+  },
 });
 
 export default Styles;
