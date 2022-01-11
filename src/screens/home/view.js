@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Platform } from "react-native";
+import { View, ScrollView, Platform } from "react-native";
 
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -27,24 +27,29 @@ const HomeScreen = ({ imgProfile, dataUser, onSubmit }) => {
       >
         <Header label="Inicio" />
         <ImgProfile img={imgProfile} data={dataUser} />
-        <BtnOption
-          icon="calendar"
-          label="Agendar cita"
-          screen="stackShelude"
-          onSubmit={onSubmit}
-        />
-        <BtnOption
-          icon="car"
-          label="Mercedes Benz Experiencie"
-          screen="link"
-          onSubmit={onSubmit}
-        />
-        <BtnOption
-          icon="tago"
-          label="Shop"
-          screen="stackShop"
-          onSubmit={onSubmit}
-        />
+        <ScrollView
+          style={styles.viewScroll}
+          contentContainerStyle={styles.contentContainer}
+        >
+          <BtnOption
+            icon="calendar"
+            label="Agendar cita"
+            screen="stackShelude"
+            onSubmit={onSubmit}
+          />
+          <BtnOption
+            icon="car"
+            label="Mercedes Benz Experiencie"
+            screen="link"
+            onSubmit={onSubmit}
+          />
+          <BtnOption
+            icon="tago"
+            label="Shop"
+            screen="stackShop"
+            onSubmit={onSubmit}
+          />
+        </ScrollView>
       </LinearGradient>
     </View>
   );

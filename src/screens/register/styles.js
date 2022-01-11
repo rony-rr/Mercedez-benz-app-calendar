@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 
   viewScrolling: {
     width: "100%",
-    height: "60%",
+    height: GlobalVars.windowHeight < 615 ? "50%" : "60%",
   },
 
   viewScroll: {
