@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
 
@@ -25,53 +25,56 @@ const index = () => {
         style={styles.background}
       >
         <Header label="Agendar Cita" />
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            paddingVertical: 20,
-          }}
+        <ScrollView
+          style={styles.viewScroll}
+          contentContainerStyle={styles.contentContainer}
         >
-          <Icon iconName="tool" color="white" size={40} />
-          <View style={{ justifyContent: "center", marginHorizontal: 15 }}>
-            <Text
-              style={{
-                fontSize: 25,
-                color: "white",
-                fontFamily: GlobalVars.fontFamily,
-              }}
-            >
-              Mantenimiento
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              paddingVertical: 20,
+            }}
+          >
+            <Icon iconName="tool" color="white" size={40} />
+            <View style={{ justifyContent: "center", marginHorizontal: 15 }}>
+              <Text
+                style={{
+                  fontSize: 25,
+                  color: "white",
+                  fontFamily: GlobalVars.fontFamily,
+                }}
+              >
+                Mantenimiento
+              </Text>
+            </View>
+          </View>
+          <View style={{ width: "80%" }}>
+            <Text style={styles.info}>
+              Un buen mantenimiento periodico ,garantiza el eficiente
+              funcionamiento de tu estrella,por ello te invitamos aque agendes
+              tu cita de servicio,desde la comodidad de tu casa a través de este
+              medio.
+            </Text>
+            <Text style={styles.info}>
+              Contamos con herramientas y equipo especializado, como el Star
+              Diagnosis, que brinda la información electronica direcamtente dede
+              el corazón de tu Mercedes , mostrando aspectos que debe ser
+              corregidos.
+            </Text>
+            <Text style={styles.info}>
+              Todos nuestros mantenimientos se rigen por guias de servicio
+              online , que brinda directamente el fabricante. Nuestro servicio
+              es personalizado y garantizado.
             </Text>
           </View>
-        </View>
-        <View style={{ width: "80%" }}>
-          <Text style={styles.info}>
-            Un buen mantenimiento periodico ,garantiza el eficiente
-            funcionamiento de tu estrella,por ello te invitamos aque agendes tu
-            cita de servicio,desde la comodidad de tu casa a través de este
-            medio.
-          </Text>
-          <Text style={styles.info}>
-            Contamos con herramientas y equipo especializado, como el Star
-            Diagnosis, que brinda la información electronica direcamtente dede
-            el corazón de tu Mercedes , mostrando aspectos que debe ser
-            corregidos.
-          </Text>
-          <Text style={styles.info}>
-            Todos nuestros mantenimientos se rigen por guias de servicio online
-            , que brinda directamente el fabricante. Nuestro servicio es
-            personalizado y garantizado.
-          </Text>
-        </View>
-        <TouchableOpacity
-          style={styles.btnCreate}
-          onPress={() => navigation.navigate("addShelude")}
-        >
-          <Text style={{ color: "white", fontSize: 20 }}>
-            Agendar
-          </Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.btnCreate}
+            onPress={() => navigation.navigate("addShelude")}
+          >
+            <Text style={{ color: "white", fontSize: 20 }}>Agendar</Text>
+          </TouchableOpacity>
+        </ScrollView>
       </LinearGradient>
     </View>
   );

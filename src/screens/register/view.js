@@ -90,7 +90,7 @@ const RegisterScreen = ({
         img={require("../../../assets/logomb.png")}
         width={GlobalVars.windowWidth / 6}
         height={GlobalVars.windowHeight / 6}
-        // mode="center"
+        mode="contain"
       />
       <View style={styles.viewScrolling}>
         <ScrollView

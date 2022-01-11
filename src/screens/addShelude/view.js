@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { View, ScrollView, Alert } from "react-native";
 
-import SelectDropdown from "react-native-select-dropdown";
-
 import { LinearGradient } from "expo-linear-gradient";
+import SelectDropdown from "react-native-select-dropdown";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import GlobalVars from "../../global/globalVars";
 
@@ -57,72 +57,74 @@ const view = ({
   };
 
   return (
-    <ScrollView
-      style={styles.container}
-      contentContainerStyle={{ alignItems: "center" }}
-    >
+    <SafeAreaView style={styles.container}>
       <Header label="Agendar Cita" />
-      <Calendar days={days} onSubmit={change} />
-      <View
-        style={{
-          flexDirection: "row",
-          marginVertical: 15,
-          justifyContent: "center",
-        }}
+      <ScrollView
+        style={styles.viewScroll}
+        contentContainerStyle={styles.contentContainer}
       >
+        <Calendar days={days} onSubmit={change} />
         <View
           style={{
-            marginHorizontal: 5,
+            flexDirection: "row",
+            marginVertical: 15,
             justifyContent: "center",
-            display: "none",
           }}
         >
-          <Icon iconName="exclamationcircle" color="#55C1FF" size={20} />
+          <View
+            style={{
+              marginHorizontal: 5,
+              justifyContent: "center",
+              display: "none",
+            }}
+          >
+            <Icon iconName="exclamationcircle" color="#55C1FF" size={20} />
+          </View>
+          <View
+            style={{
+              marginHorizontal: 5,
+              justifyContent: "center",
+              display: "none",
+            }}
+          >
+            <Texto text="Dia ocupado" size={18} />
+          </View>
         </View>
-        <View
-          style={{
-            marginHorizontal: 5,
-            justifyContent: "center",
-            display: "none",
-          }}
-        >
-          <Texto text="Dia ocupado" size={18} />
-        </View>
-      </View>
-      {horarios.length > 0 && (
-        <SelectDropdown
-          data={horarios}
-          defaultButtonText="Horarios Disponibles"
-          onSelect={(selectedItem, index) => {
-            SetearIndeScheduled(index);
-          }}
-          buttonTextAfterSelection={(selectedItem, index) => {
-            return selectedItem;
-          }}
-          rowTextForSelection={(item, index) => {
-            return item;
-          }}
-        />
-      )}
-      <Input
-        placeholder="Mantenimiento a realizar"
-        changeText={setDescripcion}
-        value={descripcion}
-      />
-      {vhorario && (
-        <Buttom
-          onSubmit={() =>
-            confirmar({
-              date: dateSelect,
-              schedule_id: indexH,
-              user_id: user,
-              maintenance_description: descripcion,
-            })
-          }
-          label="Agendar Cita"
-        />
-      )}
-    </ScrollView>
+        {horarios.length > 0 && (
+          <SelectDropdown
+            data={horarios}
+            defaultButtonText="Horarios Disponibles"
+            onSelect={(selectedItem, index) => {
+              SetearIndeScheduled(index);
+            }}
+            buttonTextAfterSelection={(selectedItem, index) => {
+              return selectedItem;
+            }}
+            rowTextForSelection={(item, index) => {
+              return item;
+            }}
+          />
+        )}
+        {vhorario && <Input
+          placeholder="Mantenimiento a realizar"
+          changeText={setDescripcion}
+          value={descripcion}
+        />}
+        {vhorario && (
+          <Buttom
+            onSubmit={() =>
+              confirmar({
+                date: dateSelect,
+                schedule_id: indexH,
+                user_id: user,
+                maintenance_description: descripcion,
+              })
+            }
+            label="Agendar Cita"
+          />
+        )}
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 

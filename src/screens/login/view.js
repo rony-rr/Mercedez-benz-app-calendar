@@ -50,7 +50,7 @@ const LoginScreen = ({ onSubmit, onRegister, onHelp, openModal }) => {
         img={require("../../../assets/logomb.png")}
         width={GlobalVars.windowWidth / 6}
         height={GlobalVars.windowHeight / 6}
-        // mode="center"
+        mode="contain"
       />
       <Textos text="Iniciar Sesión" size={28} color={GlobalVars.white} />
       <Input placeholder="Ingresar correo" changeText={setEmail} />

@@ -55,6 +55,16 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginVertical: 10,
   },
+
+  viewScroll: {
+    flex: 1,
+    width: "100%",
+  },
+
+  contentContainer: {
+    alignItems: "center",
+    paddingBottom: 25,
+  },
 });
 
 export default styles;
