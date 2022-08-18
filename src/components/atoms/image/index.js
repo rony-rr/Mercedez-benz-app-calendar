@@ -2,7 +2,7 @@ import React from "react";
 import { Image } from "react-native";
 import styles from "./styles";
 
-const imageLocal = ({ width, height, radius, mrTop, mode, img }) => {
+const imageLocal = ({ width, height, radius, mrTop, mrBottom, mode, img }) => {
   return (
     <Image
       style={[
@@ -12,6 +12,7 @@ const imageLocal = ({ width, height, radius, mrTop, mode, img }) => {
           height: height,
           borderRadius: radius,
           marginTop: mrTop,
+          marginBottom: mrBottom,
         },
       ]}
       source={img}

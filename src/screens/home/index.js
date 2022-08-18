@@ -46,7 +46,9 @@ const index = ({ navigation }) => {
     const urlPicture = `${GlobalVars.urlApi}uri`;
     try {
       const response = await fetchHook.fetchGet(urlPicture, token);
-      setImageProfile(response.data);
+      if (response?.status) {
+        setImageProfile(response?.data || null);
+      }
     } catch (error) {
       console.log(error);
     }

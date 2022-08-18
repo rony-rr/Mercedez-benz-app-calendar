@@ -53,7 +53,9 @@ const index = ({ navigation }) => {
     const urlPicture = `${GlobalVars.urlApi}uri`;
     try {
       const response = await fetchHook.fetchGet(urlPicture, token);
-      setImageProfile(response.data);
+      if (response?.status) {
+        setImageProfile(response?.data || null);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -63,15 +65,17 @@ const index = ({ navigation }) => {
     const urlCitas = `${GlobalVars.urlApi}appointments/user`;
     try {
       const response = await fetchHook.fetchGet(urlCitas, token);
-      let res = response.appointments;
-      // console.log({urlCitas});
+      // console.log("****************");
+      // console.log({ response });
+      let res = response?.appointments;
       if (res) {
         setDataCita(res);
       } else {
-        // console.log("si citas");
+        setDataCita([]);
       }
     } catch (error) {
       console.log(error);
+      Alert.alert("Ocurrio un error, intente nuevamente");
     }
   };
 
@@ -80,18 +84,48 @@ const index = ({ navigation }) => {
     navigation.navigate("account");
   };
 
-  const cancelDate = async () => {
+  const cancelDate = async (idCita) => {
     if (tokenUser) {
       const urlCitas = `${GlobalVars.urlApi}appointments/user/cancel`;
+      const data = {
+        appointment_id: idCita,
+        _method: "PUT",
+      };
       try {
-        const response = await fetchHook.fetchGet(urlCitas, tokenUser);
-        console.log(response);
-        if (response !== null) {
+        const response = await fetchHook.fetchPost(urlCitas, data, tokenUser);
+        // console.log({ response });
+        if (response?.status) {
           Alert.alert("Cita cancelada");
           getCita(tokenUser);
+        } else {
+          Alert.alert("Ocurrio un error, intente nuevamente");
         }
       } catch (error) {
         console.log(error);
+        Alert.alert("Ocurrio un error, intente nuevamente");
+      }
+    }
+  };
+
+  const dropCita = async (idCita) => {
+    if (tokenUser) {
+      const urlCitas = `${GlobalVars.urlApi}appointments/user/delete`;
+      const data = {
+        appointment_id: idCita,
+        _method: "DELETE",
+      };
+      try {
+        const response = await fetchHook.fetchPost(urlCitas, data, tokenUser);
+        // console.log({ response });
+        if (response?.status) {
+          Alert.alert("Cita eliminada");
+          getCita(tokenUser);
+        } else {
+          Alert.alert("Ocurrio un error, intente nuevamente");
+        }
+      } catch (error) {
+        console.log(error);
+        Alert.alert("Ocurrio un error, intente nuevamente");
       }
     }
   };
@@ -104,6 +138,7 @@ const index = ({ navigation }) => {
       navigation={navigation}
       logoutProcess={logoutProcess}
       cancelDate={cancelDate}
+      dropCita={dropCita}
     />
   );
 };

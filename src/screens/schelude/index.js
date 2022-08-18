@@ -7,8 +7,9 @@ import { LinearGradient } from "expo-linear-gradient";
 
 import GlobalVars from "../../global/globalVars";
 
-import Header from "../../components/molecules/header";
 import Icon from "../../components/atoms/icon";
+import Image from "../../components/atoms/image";
+import Header from "../../components/molecules/header";
 
 import Styles from "./styles";
 
@@ -49,8 +50,22 @@ const index = () => {
               </Text>
             </View>
           </View>
-          <View style={{ width: "80%" }}>
-            <Text style={styles.info}>
+          <View
+            style={{
+              width: "80%",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Image
+              img={require("../../../assets/APP_OFFER.png")}
+              width={GlobalVars.windowWidth / 1.05}
+              height={GlobalVars.windowWidth / 1.4}
+              mrTop={15}
+              mrBottom={15}
+              mode="stretch"
+            />
+            {/* <Text style={styles.info}>
               Un buen mantenimiento periodico ,garantiza el eficiente
               funcionamiento de tu estrella,por ello te invitamos aque agendes
               tu cita de servicio,desde la comodidad de tu casa a través de este
@@ -66,7 +81,7 @@ const index = () => {
               Todos nuestros mantenimientos se rigen por guias de servicio
               online , que brinda directamente el fabricante. Nuestro servicio
               es personalizado y garantizado.
-            </Text>
+            </Text> */}
           </View>
           <TouchableOpacity
             style={styles.btnCreate}
