@@ -54,6 +54,7 @@ const ShopScreen = ({ data }) => {
           )}
           keyExtractor={(item) => item.id}
           numColumns={2}
+          contentContainerStyle={styles.flatListStyle}
         />
         <TouchableOpacity
           style={styles.floatButton}

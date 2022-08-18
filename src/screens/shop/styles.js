@@ -17,6 +17,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
+  flatListStyle: {
+    paddingBottom: 50,
+  },
+
   carProduct: {
     marginTop: 10,
     alignItems: "center",

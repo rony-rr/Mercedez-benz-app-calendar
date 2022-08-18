@@ -15,7 +15,7 @@ const App = ({ visible, data, submit }) => {
         <View style={styles.centeredView}>
           <StatusBar color="black" />
           <View style={styles.header}>
-            <Text style={styles.title}>Shop</Text>
+            <Text style={styles.title}>Boutique</Text>
             <TouchableOpacity onPress={() => submit()}>
               <Text style={styles.title}>Cerrar</Text>
             </TouchableOpacity>

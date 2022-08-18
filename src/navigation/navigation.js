@@ -6,6 +6,7 @@ import TabNavigation from "../navigation/tabNavigation";
 import AccountStack from "./stackAccount";
 import UploadPicScreen from "../screens/uploadPicProfile";
 import VerifyScreen from "../screens/verifyAuth";
+import EditSchedule from "../screens/editShelude";
 
 const Stack = createNativeStackNavigator();
 const optionsScreen = { headerShown: false };
@@ -28,6 +29,11 @@ function App() {
           name="TabNavigation"
           component={TabNavigation}
           options={optionsScreen}
+        />
+        <Stack.Screen
+          name="editSchedule"
+          component={EditSchedule}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="uploadPic"
