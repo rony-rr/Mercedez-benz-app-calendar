@@ -3,6 +3,7 @@ const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 const GlobalVars = {
   urlApi: "https://experienciamercedes.com/mbconnect/admin/api/v1/",
+  // urlApi: "https://mbconnect.dive.digital/api/v1/",
   fontFamily: "Daimler",
   fondoPrincipal: "#FFF",
   white: "#FFF",

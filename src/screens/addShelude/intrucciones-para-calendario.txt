@@ -1,0 +1,8 @@
+1- se hace uso de la libreria "date-fns"
+2- se ejecuta la funcion de verificacion de dia isSunday 
+    en el componente de días de la libreria de calendario 
+3- para el paso anterior se crea un componente de CustomDay
+4- se maneja el componente se hacen validaciones y luego se renderiza 
+    el componente de días de la librería llamado day
+5- El componente esta ubicado en import Day from 
+    "react-native-calendars/src/calendar/day/basic";

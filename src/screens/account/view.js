@@ -24,18 +24,30 @@ const index = ({
   cita,
   logoutProcess,
   cancelDate,
+  dropCita,
   navigation,
 }) => {
   // console.log({cita});
 
-  const okCancel = () => {
+  const okCancel = (idCita) => {
     Alert.alert("¿Desea cancelar", "esta cita?", [
       {
         text: "Cancel",
         onPress: () => null,
         style: "cancel",
       },
-      { text: "OK", onPress: () => cancelDate() },
+      { text: "OK", onPress: () => cancelDate(idCita) },
+    ]);
+  };
+
+  const deleteCita = (idCita) => {
+    Alert.alert("¿Desea eliminar", "esta cita?", [
+      {
+        text: "Cancel",
+        onPress: () => null,
+        style: "cancel",
+      },
+      { text: "OK", onPress: () => dropCita(idCita) },
     ]);
   };
 
@@ -43,7 +55,9 @@ const index = ({
     if (!cita?.length) return null;
 
     return cita.map((item, i) => {
-      let d = item?.date ? new Date(item?.date) : null;
+      // console.log("****************");
+      // console.log({ item });
+      let d = item?.date ? new Date(`${item?.date}T12:00:00Z`) : null;
       // console.log({ d });
       const monthNames = [
         "Enero",
@@ -61,26 +75,23 @@ const index = ({
       ];
 
       const datePrint =
-        (d.getDate() < 10 ? "0" + d.getDate() : d.getDate()) +
+        (d.getDate() < 10 ? "0" + String(d.getDate()) : String(d.getDate())) +
         " de " +
         monthNames[d.getMonth()] +
         " del " +
         d.getFullYear();
-      // console.log({datePrint});
+      // console.log({ datePrint });
 
       return (
-        <View
-          key={"cita_" + i}
-          style={{
-            width: "100%",
-            justifyContent: "center",
-            alignItems: "center",
-            borderBottomColor: GlobalVars.white,
-            borderBottomWidth: 1,
-            borderRadius: 7,
-            paddingBottom: 10,
-          }}
-        >
+        <View key={"cita_" + i} style={styles.viewDate}>
+          {item.status === 3 && (
+            <TouchableOpacity
+              style={styles.dropDate}
+              onPress={() => deleteCita(item?.id || null)}
+            >
+              <AntDesign name="delete" size={25} color={GlobalVars.white} />
+            </TouchableOpacity>
+          )}
           {item?.date && (
             <Text style={styles.styleLabel}>{"Fecha: " + datePrint}</Text>
           )}
@@ -130,6 +141,25 @@ const index = ({
                 )}
               </View>
             )}
+            {/* {item.status === 1 && (
+              <TouchableOpacity
+                style={{
+                  borderColor: GlobalVars.greenMark,
+                  backgroundColor: GlobalVars.greenMark,
+                  borderRadius: 7,
+                  borderWidth: 2,
+                  paddingHorizontal: 15,
+                  paddingVertical: 5,
+                }}
+                onPress={() => navigation.navigate("editSchedule", {itemToEdit: item})}
+              >
+                <Text
+                  style={[styles.labelReserved, { color: GlobalVars.white }]}
+                >
+                  Editar
+                </Text>
+              </TouchableOpacity>
+            )} */}
             {item.status === 1 && (
               <TouchableOpacity
                 style={{
@@ -139,7 +169,7 @@ const index = ({
                   paddingHorizontal: 15,
                   paddingVertical: 5,
                 }}
-                onPress={okCancel}
+                onPress={() => okCancel(item?.id || null)}
               >
                 <Text
                   style={[styles.labelReserved, { color: GlobalVars.redMark }]}

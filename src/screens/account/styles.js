@@ -42,6 +42,26 @@ const Styles = StyleSheet.create({
     paddingHorizontal: 40,
   },
 
+  viewDate: {
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    borderBottomColor: GlobalVars.white,
+    borderBottomWidth: 1,
+    borderRadius: 7,
+    paddingBottom: 10,
+    position: "relative",
+    zIndex: 1,
+  },
+
+  dropDate: {
+    position: "absolute",
+    width: 25,
+    height: 25,
+    zIndex: 10,
+    right: 10,
+  },
+
   styleLabel: {
     color: GlobalVars.white,
     fontSize: 15,
@@ -71,7 +91,7 @@ const Styles = StyleSheet.create({
     backgroundColor: GlobalVars.white,
     justifyContent: "center",
     alignItems: "center",
-    marginVertical: 25
+    marginVertical: 25,
   },
 });
 

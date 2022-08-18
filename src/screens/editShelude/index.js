@@ -13,18 +13,19 @@ import Alert from "../../utils/useAlert";
 // Global values
 import GlobalVars from "../../global/globalVars";
 
-const urlDays = `${GlobalVars.urlApi}days_off`;
-const urlCita = `${GlobalVars.urlApi}appointments/user`;
-const urlVerificarHorario = `${GlobalVars.urlApi}schedules/`;
+const index = ({ onSubmit, route, navigation }) => {
+  const { itemToEdit } = route.params;
+  console.log({itemToEdit})
 
-const index = ({ onSubmit, navigation }) => {
   const [token, setToken] = useState(null);
   const [arrayHorarios, setarrayHorarios] = useState([]);
   const [userInfo, setUserInfo] = useState({ id: "" });
   const [verificandoHorario, setverificandoHorario] = useState(false);
   const [days, setDays] = useState([]);
+  const urlDays = `${GlobalVars.urlApi}days_off`;
+  const urlCita = `${GlobalVars.urlApi}appointments/user`;
+  const urlVerificarHorario = `${GlobalVars.urlApi}available_schedule/`;
   const [horarios, setHorarios] = useState([]);
-  const [loadingSend, setLoadingSend] = useState(false);
 
   useEffect(() => {
     getToken("userToken", "userInfo");
@@ -69,35 +70,21 @@ const index = ({ onSubmit, navigation }) => {
 
   const addShelude = async (data) => {
     try {
-      setLoadingSend(true);
-      const response = await fetchHook.fetchPost(
-        `${GlobalVars.urlApi}appointments`,
-        data,
-        token
-      );
-      // console.log(response);
+      const response = await fetchHook.fetchPost(`${GlobalVars.urlApi}appointments`, data, token);
+      // console.log(response)
       if (response.status === true) {
-        setLoadingSend(false);
         navigation.navigate("myAccount");
       } else {
         Alert("Error guardando datos");
-        setLoadingSend(false);
       }
     } catch (error) {
       console.log(error);
-      setLoadingSend(false);
-      Alert("Error, intente de nuevo");
     }
   };
 
   const verificarCitas = async (data) => {
     try {
-      if (
-        data?.maintenance_description &&
-        data?.schedule &&
-        data?.schedule !== 0 &&
-        data?.user_id
-      ) {
+      if (data?.maintenance_description && data?.schedule_id && data?.user_id) {
         const response = await fetchHook.fetchGet(urlCita, token);
         let res = response.appointments;
         let hasDate = false;
@@ -119,13 +106,13 @@ const index = ({ onSubmit, navigation }) => {
     }
   };
 
-  const verificarHorarios = async () => {
-    const url = urlVerificarHorario;
+  const verificarHorarios = async (dia) => {
+    const url = urlVerificarHorario + dia.date;
     try {
       const response = await fetchHook.fetchGet(url, token);
-      // console.log(response);
+      // console.log(response)
       const s = [];
-      response?.schedules.map((item, index) => {
+      response.disponibles.map((item, index) => {
         s.push(item.time);
       });
       setHorarios(s);
@@ -147,7 +134,6 @@ const index = ({ onSubmit, navigation }) => {
       vhorario={verificandoHorario}
       arrayHorarios={arrayHorarios}
       user={userInfo.id}
-      loadingSend={loadingSend}
     />
   );
 };

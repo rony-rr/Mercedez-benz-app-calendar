@@ -45,7 +45,7 @@ const HomeScreen = ({ imgProfile, dataUser, onSubmit }) => {
           />
           <BtnOption
             icon="tago"
-            label="Shop"
+            label="Boutique"
             screen="stackShop"
             onSubmit={onSubmit}
           />

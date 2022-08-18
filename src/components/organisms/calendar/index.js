@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import { View } from "react-native";
 import { Calendar, LocaleConfig } from "react-native-calendars";
 import { useFocusEffect } from "@react-navigation/native";
+import { isSunday } from "date-fns";
 
 import GlobalVars from "../../../global/globalVars";
 
 import useDate from "../../../utils/useDate";
 
 import Texto from "../../atoms/text";
+import CustomDay from "../../organisms/CustomDay";
 
 import styles from "./styles";
 
@@ -34,6 +36,12 @@ const index = ({ days, onSubmit }) => {
         selected: true,
         selectedColor: GlobalVars.greenMark,
         selectedTextColor: GlobalVars.white,
+        disabled: true,
+        disableTouchEvent: true,
+        marking: {
+          disabled: true,
+          disableTouchEvent: true,
+        },
       },
     };
     days.map((item) => {
@@ -68,8 +76,14 @@ const index = ({ days, onSubmit }) => {
       let resultDaysOff = {
         [INITIAL_DATE]: {
           selected: true,
-          selectedColor: GlobalVars.greenMark,
+          selectedColor: "#BEDE19",
           selectedTextColor: GlobalVars.white,
+          disabled: true,
+          disableTouchEvent: true,
+          marking: {
+            disabled: true,
+            disableTouchEvent: true,
+          },
         },
       };
       days.map((item) => {
@@ -132,15 +146,15 @@ const index = ({ days, onSubmit }) => {
       "Dic",
     ],
     dayNames: [
+      "Domingo",
       "Lunes",
       "Martes",
       "Miercoles",
       "Jueves",
       "Viernes",
       "Sabado",
-      "Domingo",
     ],
-    dayNamesShort: ["Lun", "Mar", "Mie", "Jue", "Vie", "Sab", "Dom"],
+    dayNamesShort: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
     today: "Hoy dia",
   };
 
@@ -149,7 +163,7 @@ const index = ({ days, onSubmit }) => {
   return (
     <View style={{ alignItems: "center" }}>
       <Texto text={mesSelected} size={25} />
-      <View style={{ width: "100%", height: 1, marginVertical: 15 }}></View>
+      <View style={{ width: "100%", height: 1, marginVertical: 15 }} />
       <Calendar
         enableSwipeMonths
         style={styles.calendar}
@@ -159,7 +173,10 @@ const index = ({ days, onSubmit }) => {
         maxDate={maxDate}
         markingType={"custom"}
         markedDates={data}
-        disabledDaysIndexes={[6]}
+        disabledDaysIndexes={[0]}
+        dayComponent={(props) => {
+          return <CustomDay {...props} />;
+        }}
       />
     </View>
   );

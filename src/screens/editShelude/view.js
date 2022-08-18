@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, ScrollView, Alert, ActivityIndicator } from "react-native";
+import { View, ScrollView, Alert } from "react-native";
 
 import { LinearGradient } from "expo-linear-gradient";
 import SelectDropdown from "react-native-select-dropdown";
@@ -23,14 +23,12 @@ const view = ({
   horarios,
   confirmar,
   vhorario,
-  loadingSend,
   arrayHorarios,
 }) => {
   const [indexH, setindexH] = useState(0);
   const [dateSelect, setDateSelect] = useState(null);
   const [data, setData] = useState();
   const [descripcion, setDescripcion] = useState("");
-  const [horaText, setHoraText] = useState("");
 
   useEffect(() => {
     Alert.alert(
@@ -40,27 +38,22 @@ const view = ({
 
   const change = (x) => {
     setDateSelect(x);
-    onSubmit();
+    onSubmit({
+      date: x,
+      schedule_id: indexH,
+      user_id: user,
+      maintenance_description: descripcion,
+    });
     setData({
       date: x,
       schedule_id: indexH,
       user_id: user,
-      horaText: horaText,
       maintenance_description: descripcion,
     });
   };
 
   const SetearIndeScheduled = (element) => {
-    setindexH(element);
-  };
-
-  const OnHandle = () => {
-    confirmar({
-      date: dateSelect,
-      schedule: indexH === "Otro" ? horaText : indexH,
-      user_id: user,
-      maintenance_description: descripcion,
-    });
+    setindexH(arrayHorarios[element]?.id || 0);
   };
 
   return (
@@ -102,7 +95,7 @@ const view = ({
             data={horarios}
             defaultButtonText="Horarios Disponibles"
             onSelect={(selectedItem, index) => {
-              SetearIndeScheduled(selectedItem);
+              SetearIndeScheduled(index);
             }}
             buttonTextAfterSelection={(selectedItem, index) => {
               return selectedItem;
@@ -112,28 +105,22 @@ const view = ({
             }}
           />
         )}
-        {indexH === "Otro" && (
-          <Input
-            placeholder="Ingrese la hora aquí"
-            changeText={setHoraText}
-            value={horaText}
-          />
-        )}
+        {vhorario && <Input
+          placeholder="Mantenimiento a realizar"
+          changeText={setDescripcion}
+          value={descripcion}
+        />}
         {vhorario && (
-          <Input
-            placeholder="Mantenimiento a realizar"
-            changeText={setDescripcion}
-            value={descripcion}
-          />
-        )}
-        {vhorario && !loadingSend && (
-          <Buttom onSubmit={() => OnHandle()} label="Agendar Cita" />
-        )}
-        {loadingSend && (
-          <ActivityIndicator
-            color={GlobalVars.white}
-            size="large"
-            style={{ alignSelf: "center", marginTop: 30 }}
+          <Buttom
+            onSubmit={() =>
+              confirmar({
+                date: dateSelect,
+                schedule_id: indexH,
+                user_id: user,
+                maintenance_description: descripcion,
+              })
+            }
+            label="Agendar Cita"
           />
         )}
       </ScrollView>
