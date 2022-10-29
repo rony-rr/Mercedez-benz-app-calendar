@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { StatusBar } from "react-native";
+
 // const STYLES = ["default", "dark-content", "light-content"];
 // const TRANSITIONS = ["fade", "slide", "none"];
-const index = ({
+
+const Index = ({
   color,
   styleBar = "default",
   statusTransition = "fade",
@@ -19,4 +21,4 @@ const index = ({
   );
 };
 
-export default index;
+export default Index;

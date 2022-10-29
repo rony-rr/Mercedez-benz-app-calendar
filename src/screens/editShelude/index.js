@@ -4,18 +4,19 @@ import { useFocusEffect } from "@react-navigation/native";
 
 // views
 import AddShelude from "./view";
-import TemplateLoading from "../../components/templates/splashLoading";
+
 // utils
 import fetchHook from "../../utils/useFetch";
 import storage from "../../utils/useLocalStorage";
 import useDate from "../../utils/useDate";
 import Alert from "../../utils/useAlert";
+
 // Global values
 import GlobalVars from "../../global/globalVars";
 
-const index = ({ onSubmit, route, navigation }) => {
+const Index = ({ onSubmit, route, navigation }) => {
   const { itemToEdit } = route.params;
-  console.log({itemToEdit})
+  console.log({ itemToEdit });
 
   const [token, setToken] = useState(null);
   const [arrayHorarios, setarrayHorarios] = useState([]);
@@ -70,7 +71,11 @@ const index = ({ onSubmit, route, navigation }) => {
 
   const addShelude = async (data) => {
     try {
-      const response = await fetchHook.fetchPost(`${GlobalVars.urlApi}appointments`, data, token);
+      const response = await fetchHook.fetchPost(
+        `${GlobalVars.urlApi}appointments`,
+        data,
+        token
+      );
       // console.log(response)
       if (response.status === true) {
         navigation.navigate("myAccount");
@@ -138,4 +143,4 @@ const index = ({ onSubmit, route, navigation }) => {
   );
 };
 
-export default index;
+export default Index;

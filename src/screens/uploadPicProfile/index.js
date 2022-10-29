@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { Alert } from "react-native";
+
 import * as ImagePicker from "expo-image-picker";
 
 import GlobalVars from "../../global/globalVars";
@@ -9,7 +10,7 @@ import storage from "../../utils/useLocalStorage";
 
 import UploadPicProfile from "./view";
 
-const index = ({ navigation }) => {
+const Index = ({ navigation }) => {
   const [tokeUser, setTokenUser] = useState("");
   const [userInfo, setUserInfo] = useState(null);
   const [pickedImagePath, setPickedImagePath] = useState(null);
@@ -147,4 +148,4 @@ const index = ({ navigation }) => {
   );
 };
 
-export default index;
+export default Index;

@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { Modal, Text, TouchableOpacity, View, Linking } from "react-native";
-import styles from "./styles";
-import Image from "../../atoms/image";
-import GlobalVars from "../../../global/globalVars";
-import Icon from "../../atoms/icon";
-import StatusBar from "../../atoms/statusBar";
+
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+
+import GlobalVars from "../../../global/globalVars";
+
+import Image from "../../atoms/image";
+import StatusBar from "../../atoms/statusBar";
+
+import styles from "./styles";
+
 const App = ({ visible, data, submit }) => {
   const [status, setStatus] = useState(1);
 
@@ -38,7 +42,7 @@ const App = ({ visible, data, submit }) => {
             style={styles.btn}
             onPress={() =>
               Linking.openURL(
-                `whatsapp://send?text=Hola, quisiera más información sobre el producto: ${data.title}&phone=503 72102380`
+                `https://wa.me/50372102380?text=Hola, quisiera más información sobre el producto: ${data.title}`
               )
             }
           >

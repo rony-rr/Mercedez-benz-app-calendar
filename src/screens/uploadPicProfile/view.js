@@ -1,17 +1,18 @@
 import React from "react";
 import { View, TouchableOpacity, Image } from "react-native";
+
 import { useNavigation } from "@react-navigation/native";
 
-import { Octicons } from "@expo/vector-icons";
-import { AntDesign } from "@expo/vector-icons";
-import Text from "../../components/atoms/text";
-import Buttom from "../../components/molecules/button";
-import ImgProfile from "../../components/molecules/imgProfile";
+import { Octicons, AntDesign } from "@expo/vector-icons";
 
-import styles from "./styles";
 import GlobalVars from "../../global/globalVars";
 
-const view = ({ onSubmit, uploadPic, pickedImagePath = null }) => {
+import Text from "../../components/atoms/text";
+import Buttom from "../../components/molecules/button";
+
+import styles from "./styles";
+
+const Element = ({ onSubmit, uploadPic, pickedImagePath = null }) => {
   const navigation = useNavigation();
 
   return (
@@ -59,4 +60,4 @@ const view = ({ onSubmit, uploadPic, pickedImagePath = null }) => {
   );
 };
 
-export default view;
+export default Element;

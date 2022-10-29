@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, FlatList, TouchableOpacity, Linking } from "react-native";
+import React, { useState } from "react";
+import { View, FlatList, TouchableOpacity, Linking } from "react-native";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+
 import { LinearGradient } from "expo-linear-gradient";
 
 /** Variables globales */
@@ -60,7 +61,7 @@ const ShopScreen = ({ data }) => {
           style={styles.floatButton}
           onPress={() =>
             Linking.openURL(
-              `whatsapp://send?text=Hola, quisiera más información sobre los productos en el cátalogo de la aplicación Mercedes Connect&phone=50372102380`
+              `https://wa.me/50372102380?text=Hola, quisiera más información sobre los productos en el cátalogo de la aplicación Mercedes Connect`
             )
           }
         >

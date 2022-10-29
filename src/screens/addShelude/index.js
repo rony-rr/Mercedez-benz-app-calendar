@@ -2,22 +2,23 @@ import React, { useState, useEffect } from "react";
 
 import { useFocusEffect } from "@react-navigation/native";
 
-// views
-import AddShelude from "./view";
-import TemplateLoading from "../../components/templates/splashLoading";
 // utils
+import useDate from "../../utils/useDate";
 import fetchHook from "../../utils/useFetch";
 import storage from "../../utils/useLocalStorage";
-import useDate from "../../utils/useDate";
-import Alert from "../../utils/useAlert";
+
 // Global values
 import GlobalVars from "../../global/globalVars";
 
+// views
+import Alert from "../../utils/useAlert";
+import AddShelude from "./view";
+
 const urlDays = `${GlobalVars.urlApi}days_off`;
 const urlCita = `${GlobalVars.urlApi}appointments/user`;
-const urlVerificarHorario = `${GlobalVars.urlApi}schedules/`;
+const urlVerificarHorario = `${GlobalVars.urlApi}schedules`;
 
-const index = ({ onSubmit, navigation }) => {
+const Index = ({ onSubmit, navigation }) => {
   const [token, setToken] = useState(null);
   const [arrayHorarios, setarrayHorarios] = useState([]);
   const [userInfo, setUserInfo] = useState({ id: "" });
@@ -58,6 +59,7 @@ const index = ({ onSubmit, navigation }) => {
       const response = await fetchHook.fetchGet(urlDays, token);
       if (response.status === true) {
         let res = await useDate.formaterDaysOff(response.dates);
+
         setDays(res);
       } else {
         // console.log('Error obtenido days off')
@@ -152,4 +154,4 @@ const index = ({ onSubmit, navigation }) => {
   );
 };
 
-export default index;
+export default Index;

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+
 import storage from "../../utils/useLocalStorage";
 import Splash from "../../components/templates/splashLoading";
 
-const index = ({ navigation }) => {
+const Index = ({ navigation }) => {
   const [verificandoAuth, setVerificandoAuth] = useState(null);
 
   useEffect(() => {
@@ -25,4 +26,4 @@ const index = ({ navigation }) => {
   if (!verificandoAuth) return <Splash />;
 };
 
-export default index;
+export default Index;

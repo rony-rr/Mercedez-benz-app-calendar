@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, ScrollView, Alert, ActivityIndicator } from "react-native";
 
-import { LinearGradient } from "expo-linear-gradient";
 import SelectDropdown from "react-native-select-dropdown";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -16,7 +15,7 @@ import Buttom from "../../components/molecules/button";
 
 import styles from "./styles";
 
-const view = ({
+const Element = ({
   user,
   onSubmit,
   days,
@@ -141,4 +140,4 @@ const view = ({
   );
 };
 
-export default view;
+export default Element;

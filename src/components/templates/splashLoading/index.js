@@ -1,9 +1,14 @@
 import React from "react";
-import styles from "./styles";
+
 import { View } from "react-native";
-import Loading from "../../atoms/loading";
+
 import Image from "../../atoms/image";
+import Loading from "../../atoms/loading";
+
 import GlobalVars from "../../../global/globalVars";
+
+import styles from "./styles";
+
 const index = () => {
   return (
     <View style={styles.view}>

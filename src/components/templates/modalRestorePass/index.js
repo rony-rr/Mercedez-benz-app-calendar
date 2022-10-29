@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, View, TouchableOpacity, Alert } from "react-native";
+import { Modal, View, TouchableOpacity } from "react-native";
 
 import { AntDesign } from "@expo/vector-icons";
 

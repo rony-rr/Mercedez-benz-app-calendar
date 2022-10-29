@@ -1,8 +1,12 @@
 import React, { useState } from "react";
+
 import useFont from "./src/utils/useFonts";
-import Splash from "./src/components/templates/splashLoading";
-import Navigation from "./src/navigation/navigation";
+
 import storage from "./src/utils/useLocalStorage";
+
+import Navigation from "./src/navigation/navigation";
+import Splash from "./src/components/templates/splashLoading";
+
 const Root = () => {
   const [loadingFonts, setLoadingFonts] = useState(null);
   useFont.loadFonts().then((res) => setLoadingFonts(res));
