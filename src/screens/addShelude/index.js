@@ -125,11 +125,13 @@ const Index = ({ onSubmit, navigation }) => {
     const url = urlVerificarHorario;
     try {
       const response = await fetchHook.fetchGet(url, token);
-      // console.log(response);
+      // console.log({ response });
       const s = [];
-      response?.schedules.map((item, index) => {
-        s.push(item.time);
+      response?.schedules.forEach((item, index) => {
+        if (item.time !== "Otro") s.push(item.time);
       });
+      s.push("Otro");
+
       setHorarios(s);
       setarrayHorarios(response.disponibles);
       setverificandoHorario(true);

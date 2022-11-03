@@ -173,7 +173,7 @@ const Index = ({ days, onSubmit }) => {
         style={styles.calendar}
         onDayPress={onDayPress}
         current={INITIAL_DATE}
-        minDate={selected}
+        minDate={INITIAL_DATE}
         maxDate={maxDate}
         markingType={"custom"}
         markedDates={data}

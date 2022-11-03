@@ -47,6 +47,10 @@ export default function CustomDay(props) {
   return (
     <TouchableOpacity
       style={{
+        width: 30,
+        height: 30,
+        alignItems: "center",
+        justifyContent: "center",
         backgroundColor:
           state === "selected" && !marking.isToday
             ? GlobalVars.blueMercedes
