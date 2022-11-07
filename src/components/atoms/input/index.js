@@ -1,9 +1,11 @@
 import React from "react";
 import { TextInput } from "react-native";
+
 import GlobalVars from "../../../global/globalVars";
+
 import styles from "./styles";
 
-const index = (props) => {
+const Index = (props) => {
   const { value, type, secure, placeholder, changeText, editable } = props;
   return (
     <TextInput
@@ -18,4 +20,4 @@ const index = (props) => {
   );
 };
 
-export default index;
+export default Index;

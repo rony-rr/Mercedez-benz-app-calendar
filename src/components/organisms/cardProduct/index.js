@@ -1,14 +1,14 @@
 import React from "react";
 import { TouchableOpacity, View } from "react-native";
 
-import Image from "../../atoms/image";
 import GlobalVars from "../../../global/globalVars";
-import Modal from "../../templates/modalProduct";
+
+import Image from "../../atoms/image";
 import Texto from "../../atoms/text";
 
 import styles from "./styles";
 
-const index = ({ img, onSubmit, data }) => {
+const Index = ({ img, onSubmit, data }) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => onSubmit(data)} style={styles.card}>
@@ -28,4 +28,4 @@ const index = ({ img, onSubmit, data }) => {
   );
 };
 
-export default index;
+export default Index;

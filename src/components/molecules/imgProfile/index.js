@@ -1,9 +1,13 @@
 import React from "react";
 import { View, Text } from "react-native";
+
 import Image from "../../atoms/image";
-import styles from "./styles";
+
 import GlobalVars from "../../../global/globalVars";
-const index = ({ img, data }) => {
+
+import styles from "./styles";
+
+const Index = ({ img, data }) => {
   const imgSrc = img
     ? { uri: img }
     : require("../../../../assets/avatar-default.png");
@@ -23,4 +27,4 @@ const index = ({ img, data }) => {
   );
 };
 
-export default index;
+export default Index;

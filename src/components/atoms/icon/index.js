@@ -1,15 +1,8 @@
-import React from 'react'
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons';
-const Icon = ({iconName, color, size}) => {
-  return (
-    <AntDesign 
-      name={iconName} 
-      size={size} 
-      color={color} 
-    />
-  )
-  
-}
+import React from "react";
+import { AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
 
-export default Icon
+const Icon = ({ iconName, color, size }) => {
+  return <AntDesign name={iconName} size={size} color={color} />;
+};
+
+export default Icon;

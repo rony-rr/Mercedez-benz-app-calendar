@@ -15,7 +15,7 @@ import Styles from "./styles";
 
 const styles = Styles;
 
-const index = () => {
+const Index = () => {
   const navigation = useNavigation();
 
   return (
@@ -95,4 +95,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;
