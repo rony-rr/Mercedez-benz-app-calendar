@@ -1,4 +1,6 @@
 {
+  "name": "mercedes-connect",
+  "version": "2.6.02",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
@@ -6,7 +8,13 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "updateProject": "expo-cli upgrade && expo-cli doctor && expo doctor --fix-dependencies &&  yarn upgrade --latest && yarn install"
+    "updateProject": "expo-cli upgrade && expo-cli doctor && expo doctor --fix-dependencies &&  yarn upgrade --latest && yarn install",
+    "publisChannel": "expo publish",
+    "eas:config": "eas build:configure",
+    "buildAPK": "eas build -p android --profile preview4APK",
+    "buildIOS": "eas build -p ios --profile previewIOS1",
+    "compiledAndroid": "eas build --platform android",
+    "compiledIOS": "eas build --platform ios"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "~1.17.3",
@@ -21,6 +29,7 @@
     "expo-font": "~10.2.0",
     "expo-image-picker": "~13.3.1",
     "expo-linear-gradient": "~11.4.0",
+    "expo-updates": "~0.14.6",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-native": "0.69.6",

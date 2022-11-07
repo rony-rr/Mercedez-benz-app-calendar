@@ -62,8 +62,8 @@ export default function CustomDay(props) {
         padding: 5,
         borderRadius: 75,
       }}
-      onPress={() => props.onPress(date)}
-      onLongPress={() => props.onPress(date)}
+      onPress={() => !marking.disabled && props.onPress(date)}
+      onLongPress={() => !marking.disabled && props.onPress(date)}
     >
       <Text
         style={{

@@ -14,7 +14,7 @@ import styles from "./styles";
 
 const Index = ({ days, onSubmit }) => {
   const INITIAL_DATE = useDate.fechaActual;
-  const [selected, setSelected] = useState(INITIAL_DATE);
+  const [selected, setSelected] = useState(null);
   const [maxDate, setMaxDate] = useState(null);
   const [mesSelected, setMesSelected] = useState("Seleccionar una fecha");
   const [data, setData] = useState();
@@ -23,7 +23,7 @@ const Index = ({ days, onSubmit }) => {
     let d = new Date();
     let afterDays = 1;
     // d.setDate(d.getDate() + afterDays);
-    setSelected(useDate.formatoFecha(d, "yy-mm-dd"));
+    // setSelected(useDate.formatoFecha(d, "yy-mm-dd"));
     d = new Date();
     afterDays = 90;
     d.setDate(d.getDate() + afterDays);
@@ -50,7 +50,7 @@ const Index = ({ days, onSubmit }) => {
       let d = new Date();
       let afterDays = 1;
       // d.setDate(d.getDate() + afterDays);
-      setSelected(useDate.formatoFecha(d, "yy-mm-dd"));
+      // setSelected(useDate.formatoFecha(d, "yy-mm-dd"));
       d = new Date();
       afterDays = 90;
       d.setDate(d.getDate() + afterDays);

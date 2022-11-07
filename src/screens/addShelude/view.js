@@ -41,6 +41,8 @@ const Element = ({
   const [horaText, setHoraText] = useState("");
   const [dateUse, setDateUse] = useState(new Date());
 
+  const [textAlert, setTextAlert] = useState("");
+
   useEffect(() => {
     Alert.alert(
       "Agende su cita desde el día de mañana, excepto Domingos y días festivos."
@@ -53,7 +55,7 @@ const Element = ({
 
   useEffect(() => {
     if (indexH === "Otro") {
-      Alert.alert(
+      setTextAlert(
         `Debe agendar en horario entre 08:30 AM - 11:30 AM
             y 1:00 PM - 04:30 PM
           `
@@ -86,20 +88,24 @@ const Element = ({
         (selectedDate.hours <= 16 &&
         selectedDate.minutes <= 30))
     ) {
-      setHoraPicker(selectedDate);
-      setHoraText(
-        `${
-          selectedDate.hours < 10
-            ? "0" + selectedDate.hours
-            : selectedDate.hours
-        }:${
-          selectedDate.minutes < 10
-            ? "0" + selectedDate.minutes
-            : selectedDate.minutes
-        }`
-      );
+      if (isToday(dateSelect) && dateUse.getHours() > selectedDate.hours) {
+        Alert.alert("Debe seleccionar un horario válido.");
+      } else {
+        setHoraPicker(selectedDate);
+        setHoraText(
+          `${
+            selectedDate.hours < 10
+              ? "0" + selectedDate.hours
+              : selectedDate.hours
+          }:${
+            selectedDate.minutes < 10
+              ? "0" + selectedDate.minutes
+              : selectedDate.minutes
+          }`
+        );
+      }
     } else {
-      Alert.alert(
+      setTextAlert(
         `Debe agendar en horario entre 08:30 AM - 11:30 AM
             y 1:00 PM - 04:30 PM
           `
@@ -152,11 +158,7 @@ const Element = ({
         </View>
         {horarios.length > 0 && (
           <SelectDropdown
-            data={
-              isToday(dateSelect) && dateUse.getHours() > 8
-                ? ["Otro"]
-                : horarios
-            }
+            data={isToday(dateSelect) ? ["Otro"] : horarios}
             defaultButtonText="Horarios Disponibles"
             onSelect={(selectedItem, index) => {
               SetearIndeScheduled(selectedItem);
@@ -176,12 +178,14 @@ const Element = ({
             value={horaText}
           />
         )} */}
+        {textAlert && <View style={{ marginTop: 20 }} />}
+        {textAlert && <Texto text={textAlert} size={18} />}
         {(indexH === "Otro" && (
           <View
             style={{
               width: "85%",
               backgroundColor: GlobalVars.white,
-              marginTop: 35,
+              marginTop: 10,
               marginBottom: 10,
               borderRadius: 8,
             }}

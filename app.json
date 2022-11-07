@@ -3,7 +3,8 @@
     "name": "Mercedes Connect",
     "description": "App de reverva de citas",
     "slug": "mercedes-connect",
-    "version": "2.5.94",
+    "version": "2.6.02",
+    "owner": "ronyto",
     "orientation": "portrait",
     "primaryColor": "#cccccc",
     "icon": "./assets/icon.png",
@@ -13,15 +14,20 @@
       "backgroundColor": "#000"
     },
     "packagerOpts": {
-      "assetExts": ["ttf", "otf"]
+      "assetExts": [
+        "ttf",
+        "otf"
+      ]
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "bundleIdentifier": "com.mercedesbenz.sv.appreservas",
-      "buildNumber": "2.5.94",
+      "buildNumber": "2.6.02",
       "supportsTablet": true,
       "infoPlist": {
         "NSCameraUsageDescription": "Habilite el acceso a la cámara para que pueda almacenar una foto de perfil instantánea",
@@ -31,7 +37,7 @@
       }
     },
     "android": {
-      "versionCode": 205094,
+      "versionCode": 206002,
       "package": "com.mercedesbenz.sv.appreservas",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
@@ -43,6 +49,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "8f492daa-48ae-4f1d-be98-cddc33771982"
+      }
     }
   }
 }
