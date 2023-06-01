@@ -13,7 +13,7 @@ import storage from "../../utils/useLocalStorage";
 // Views
 import Home from "./view";
 
-const index = ({ navigation }) => {
+const Index = ({ navigation }) => {
   const [imageProfile, setImageProfile] = useState(null);
   const [dataUser, setDataUser] = useState([]);
 
@@ -67,4 +67,4 @@ const index = ({ navigation }) => {
   );
 };
 
-export default index;
+export default Index;

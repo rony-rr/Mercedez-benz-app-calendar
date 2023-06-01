@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 
+/** Variables Globales */
+import GlobalVars from "../../global/globalVars";
+
 /** Utils */
 import storage from "../../utils/useLocalStorage";
 import fetchHook from "../../utils/useFetch";
 
-/** Variables Globales */
-import GlobalVars from "../../global/globalVars";
-
 /** Componentes */
 import Shop from "./view";
 
-const index = ({ navigation }) => {
+const Index = ({ navigation }) => {
   const [dataProduct, setDataProduct] = useState([]);
 
   useEffect(() => {
@@ -47,4 +47,4 @@ const index = ({ navigation }) => {
   return <Shop data={dataProduct} />;
 };
 
-export default index;
+export default Index;

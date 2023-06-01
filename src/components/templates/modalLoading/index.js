@@ -1,10 +1,13 @@
 import React from "react";
 import { Modal, View } from "react-native";
+
 import Loading from "../../atoms/loading";
+
 import GlobalVars from "../../../global/globalVars";
+
 import styles from "./styles";
 
-const index = (props) => {
+const Index = (props) => {
   const { openModal } = props;
 
   return (
@@ -16,4 +19,4 @@ const index = (props) => {
   );
 };
 
-export default index;
+export default Index;

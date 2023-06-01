@@ -1,7 +1,6 @@
 import { StyleSheet } from "react-native";
 import GlobalVars from "../../../global/globalVars";
 
-GlobalVars;
 const styles = StyleSheet.create({
   container: {
     width: "50%",

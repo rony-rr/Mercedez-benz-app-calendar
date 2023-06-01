@@ -1,8 +1,9 @@
 import React from "react";
 import { Image } from "react-native";
+
 import styles from "./styles";
 
-const imageLocal = ({ width, height, radius, mrTop, mrBottom, mode, img }) => {
+const ImageLocal = ({ width, height, radius, mrTop, mrBottom, mode, img }) => {
   return (
     <Image
       style={[
@@ -21,4 +22,4 @@ const imageLocal = ({ width, height, radius, mrTop, mrBottom, mode, img }) => {
   );
 };
 
-export default imageLocal;
+export default ImageLocal;

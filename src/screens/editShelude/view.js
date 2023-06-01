@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { View, ScrollView, Alert } from "react-native";
 
-import { LinearGradient } from "expo-linear-gradient";
 import SelectDropdown from "react-native-select-dropdown";
 import { SafeAreaView } from "react-native-safe-area-context";
-
-import GlobalVars from "../../global/globalVars";
 
 import Header from "../../components/molecules/header";
 import Calendar from "../../components/organisms/calendar";
@@ -16,7 +13,7 @@ import Buttom from "../../components/molecules/button";
 
 import styles from "./styles";
 
-const view = ({
+const Element = ({
   user,
   onSubmit,
   days,
@@ -105,11 +102,13 @@ const view = ({
             }}
           />
         )}
-        {vhorario && <Input
-          placeholder="Mantenimiento a realizar"
-          changeText={setDescripcion}
-          value={descripcion}
-        />}
+        {vhorario && (
+          <Input
+            placeholder="Mantenimiento a realizar"
+            changeText={setDescripcion}
+            value={descripcion}
+          />
+        )}
         {vhorario && (
           <Buttom
             onSubmit={() =>
@@ -128,4 +127,4 @@ const view = ({
   );
 };
 
-export default view;
+export default Element;

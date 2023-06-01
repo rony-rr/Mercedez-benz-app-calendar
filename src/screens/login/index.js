@@ -5,7 +5,7 @@ import GlobalVars from "../../global/globalVars";
 import storage from "../../utils/useLocalStorage";
 import Alert from "../../utils/useAlert";
 
-const index = ({ navigation }) => {
+const Index = ({ navigation }) => {
   const [openModal, setOpenModal] = useState(false);
   const [restorePass, setRestorePass] = useState(false);
 
@@ -47,4 +47,4 @@ const index = ({ navigation }) => {
   );
 };
 
-export default index;
+export default Index;

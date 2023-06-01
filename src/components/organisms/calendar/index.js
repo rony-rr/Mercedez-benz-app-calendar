@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { View } from "react-native";
+import { View, Text } from "react-native";
 import { Calendar, LocaleConfig } from "react-native-calendars";
 import { useFocusEffect } from "@react-navigation/native";
-import { isSunday } from "date-fns";
 
 import GlobalVars from "../../../global/globalVars";
 
@@ -13,9 +12,9 @@ import CustomDay from "../../organisms/CustomDay";
 
 import styles from "./styles";
 
-const index = ({ days, onSubmit }) => {
+const Index = ({ days, onSubmit }) => {
   const INITIAL_DATE = useDate.fechaActual;
-  const [selected, setSelected] = useState(INITIAL_DATE);
+  const [selected, setSelected] = useState(null);
   const [maxDate, setMaxDate] = useState(null);
   const [mesSelected, setMesSelected] = useState("Seleccionar una fecha");
   const [data, setData] = useState();
@@ -23,8 +22,8 @@ const index = ({ days, onSubmit }) => {
   useEffect(() => {
     let d = new Date();
     let afterDays = 1;
-    d.setDate(d.getDate() + afterDays);
-    setSelected(useDate.formatoFecha(d, "yy-mm-dd"));
+    // d.setDate(d.getDate() + afterDays);
+    // setSelected(useDate.formatoFecha(d, "yy-mm-dd"));
     d = new Date();
     afterDays = 90;
     d.setDate(d.getDate() + afterDays);
@@ -34,14 +33,10 @@ const index = ({ days, onSubmit }) => {
     let resultDaysOff = {
       [INITIAL_DATE]: {
         selected: true,
-        selectedColor: GlobalVars.greenMark,
-        selectedTextColor: GlobalVars.white,
-        disabled: true,
-        disableTouchEvent: true,
-        marking: {
-          disabled: true,
-          disableTouchEvent: true,
-        },
+        // selectedColor: GlobalVars.greenMark,
+        // selectedTextColor: GlobalVars.white,
+        // disabled: true,
+        // disableTouchEvent: true,
       },
     };
     days.map((item) => {
@@ -54,8 +49,8 @@ const index = ({ days, onSubmit }) => {
     React.useCallback(() => {
       let d = new Date();
       let afterDays = 1;
-      d.setDate(d.getDate() + afterDays);
-      setSelected(useDate.formatoFecha(d, "yy-mm-dd"));
+      // d.setDate(d.getDate() + afterDays);
+      // setSelected(useDate.formatoFecha(d, "yy-mm-dd"));
       d = new Date();
       afterDays = 90;
       d.setDate(d.getDate() + afterDays);
@@ -76,14 +71,10 @@ const index = ({ days, onSubmit }) => {
       let resultDaysOff = {
         [INITIAL_DATE]: {
           selected: true,
-          selectedColor: "#BEDE19",
-          selectedTextColor: GlobalVars.white,
-          disabled: true,
-          disableTouchEvent: true,
-          marking: {
-            disabled: true,
-            disableTouchEvent: true,
-          },
+          // selectedColor: GlobalVars.bluePantone,
+          // selectedTextColor: GlobalVars.white,
+          // disabled: true,
+          // disableTouchEvent: true,
         },
       };
       days.map((item) => {
@@ -104,14 +95,27 @@ const index = ({ days, onSubmit }) => {
       resultDaysOff = { ...item, ...resultDaysOff };
     });
 
+    setSelected(
+      useDate.formatoFecha(
+        new Date(day.year, day.month - 1, day.day),
+        "yy-mm-dd"
+      )
+    );
+
     setData({
       ...resultDaysOff,
       [day.dateString]: {
         selected: true,
         marked: true,
         disableTouchEvent: true,
-        selectedColor: GlobalVars.greenMark,
+        selectedColor: GlobalVars.blueMercedes,
         selectedTextColor: GlobalVars.white,
+        disabled: true,
+        disableTouchEvent: true,
+        marking: {
+          disabled: true,
+          disableTouchEvent: true,
+        },
       },
     });
   };
@@ -169,17 +173,26 @@ const index = ({ days, onSubmit }) => {
         style={styles.calendar}
         onDayPress={onDayPress}
         current={INITIAL_DATE}
-        minDate={selected}
+        minDate={INITIAL_DATE}
         maxDate={maxDate}
         markingType={"custom"}
         markedDates={data}
-        disabledDaysIndexes={[0]}
+        hideExtraDays={true}
+        disabledDaysIndexes={[6]}
+        theme={{
+          selectedDayBackgroundColor: GlobalVars.blueMercedes,
+          selectedDayTextColor: GlobalVars.white,
+          todayTextColor: GlobalVars.bluePantone,
+          dayTextColor: GlobalVars.black,
+        }}
         dayComponent={(props) => {
-          return <CustomDay {...props} />;
+          return (
+            <CustomDay selectedDay={selected} daysDisabled={days} {...props} />
+          );
         }}
       />
     </View>
   );
 };
 
-export default index;
+export default Index;

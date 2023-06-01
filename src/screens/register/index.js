@@ -6,7 +6,6 @@ import GlobalVars from "../../global/globalVars";
 /** Utils */
 import fetchHook from "../../utils/useFetch";
 import storage from "../../utils/useLocalStorage";
-import Alert from "../../utils/useAlert";
 
 /** Componentes */
 import Register from "./view";

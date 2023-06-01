@@ -6,18 +6,15 @@ import { LinearGradient } from "expo-linear-gradient";
 
 import GlobalVars from "../../global/globalVars";
 
-import Icon from "../../components/atoms/icon";
 import Input from "../../components/atoms/input";
-import StatusBar from "../../components/atoms/statusBar";
 import Header from "../../components/molecules/header";
 import ImgProfile from "../../components/molecules/imgProfile";
-import BtnOption from "../../components/organisms/btnOption";
 
 import Styles from "./styles";
 
 const styles = Styles;
 
-const index = ({
+const Index = ({
   imgProfile,
   dataUser,
   onSubmit,
@@ -303,4 +300,4 @@ const index = ({
   );
 };
 
-export default index;
+export default Index;
